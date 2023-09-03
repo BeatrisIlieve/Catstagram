@@ -1,3 +1,17 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def add_cat(request):
+    return render(request, 'cats/cat-add-page.html')
+
+
+def delete_cat(request):
+    return render(request, 'cats/cat-delete-page.html')
+
+
+def details_cat(request):
+    return render(request, 'cats/cat-details-page.html')
+
+
+def edit_cat(request):
+    return render(request, 'cats/cat-edit-page.html')
