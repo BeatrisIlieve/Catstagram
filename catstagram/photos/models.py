@@ -4,10 +4,13 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 
 from catstagram.cats.models import Cat
+from catstagram.core.model_mixins import StrFromFieldsMixin
 from catstagram.photos.validators import validate_file_less_than_5mb
 
 
-class Photo(models.Model):
+class Photo(StrFromFieldsMixin, models.Model):
+    str_fields = ('id', 'publication_date')
+
     MIN_DESCRIPTION_LENGTH = 10
     MAX_DESCRIPTION_LENGTH = 300
 

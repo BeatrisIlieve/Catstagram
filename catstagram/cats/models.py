@@ -3,8 +3,12 @@
 from django.db import models
 from django.utils.text import slugify
 
+from catstagram.core.model_mixins import StrFromFieldsMixin
 
-class Cat(models.Model):
+
+class Cat(StrFromFieldsMixin, models.Model):
+    str_fields = ('id', 'name')
+
     MAX_NAME = 30
 
     name = models.CharField(
