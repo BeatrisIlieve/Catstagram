@@ -1,8 +1,10 @@
 # photos/models.py
+
 from django.core.validators import MinLengthValidator
 from django.db import models
 
 from catstagram.cats.models import Cat
+from catstagram.photos.validators import validate_file_less_than_5mb
 
 
 class Photo(models.Model):
@@ -12,12 +14,16 @@ class Photo(models.Model):
     MAX_LOCATIONS_LENGTH = 30
 
     photo = models.ImageField(
+        upload_to='mediafiles/cat_photos/',
         null=False,
         blank=True,
+        validators=(validate_file_less_than_5mb,),
     )
 
     description = models.CharField(
         max_length=MAX_DESCRIPTION_LENGTH,
+        null=True,
+        blank=True,
         validators=(
             MinLengthValidator(MIN_DESCRIPTION_LENGTH),
         )
@@ -25,6 +31,8 @@ class Photo(models.Model):
 
     locations = models.CharField(
         max_length=MAX_LOCATIONS_LENGTH,
+        null=True,
+        blank=True,
     )
 
     publication_date = models.DateField(
