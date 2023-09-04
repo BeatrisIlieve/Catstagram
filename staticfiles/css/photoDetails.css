@@ -1,5 +1,6 @@
 .userDetails a {
-    color: initial;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px #FFB6C1;
 }
 
 .pet-details {
@@ -9,7 +10,7 @@
 .comments {
     display: flex;
     margin-top: 10px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #FFC0CB;
 }
 
 .comments .userDetails {
@@ -17,7 +18,7 @@
 }
 
 .comments span {
-    color: gray;
+    color: #FFB6C1;
     font-size: 10px;
 }
 
@@ -37,7 +38,7 @@
     word-break: break-all;
     white-space: normal;
     font-weight: bold;
-    color: rgb(70, 65, 65);
+    color: #FFB6C1;
 }
 
 .comment-data h3 {

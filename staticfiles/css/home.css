@@ -15,7 +15,7 @@ body {
 }
 
 .error {
-    color: red;
+    color: #FF1493;
 }
 
 .navbar {
@@ -26,24 +26,25 @@ body {
     justify-content: center;
     background: rgb(255, 255, 255);
     width: 100%;
-    border: 1px solid rgb(218, 217, 217);
+    border: 1px solid #FFC0CB;
 }
 
 .container {
     padding: 15px 0;
     width: 75%;
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .container a {
-    color: #403e3e;
+    color: #FFB6C1;
 }
 
 .errorlist li {
     width: 200px;
-    color: red;
+    color: #FF1493;
     list-style-type: none;
 }
 
@@ -68,9 +69,9 @@ body {
     padding: 5px 5px 5px 0;
     text-indent: 21px;
     outline: none;
-    border: 1px solid rgb(218, 217, 217);
+    border: 1px solid #FFC0CB;
     border-radius: 2px;
-    color: rgb(77, 77, 77);
+    color: #FF69B4;
 }
 
 .searchbar button {
@@ -90,19 +91,19 @@ body {
 
 .searchbar input::placeholder {
     font-weight: lighter;
-    color: rgb(172, 172, 172);
+    color: #FF69B4;
 }
 
 .home {
     font-size: 25px;
     margin: 10px 0 0 3px;
-    color: black;
+    color: #FF69B4;
     font-family: 'Indie Flower', cursive;
 }
 
 .nav-links {
     font-weight: lighter;
-    color: rgb(172, 172, 172);
+    color: #FF69B4;
     /* background: #333 ; */
 }
 
@@ -112,9 +113,11 @@ body {
 }
 
 .nav-group .nav-item a {
-    font-size: 22px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-size: 28px;
     display: block;
-    color: black;
+    color: 	#FFB6C1;
 }
 
 .nav-group {
@@ -168,7 +171,7 @@ main .container {
     width: 100%;
     /* min-height: 400px; */
     display: inline-block;
-    border: 1px solid rgba(7, 7, 7, 0.24);
+    border: 1px solid #FFC0CB;
 }
 
 .col-9 .card .top {
@@ -200,7 +203,7 @@ main .container {
     overflow: hidden;
     width: 30px;
     height: 30px;
-    background: linear-gradient(to right, red, orange);
+    background: linear-gradient(to right, #FF1493, #FFC0CB);
     padding: 2px;
     margin-right: 8px;
 }
@@ -236,7 +239,7 @@ main .container {
 
 .col-9 .card .top .userDetails h3 {
     font-size: 16px;
-    color: #4d4d4f;
+    color: 	#FFB6C1;
     font-weight: 500;
     line-height: 1em;
     white-space: nowrap; 
@@ -277,49 +280,49 @@ main .container {
 }
 
 .likes {
-    font-weight: 500;
+    font-weight: bold;
     margin-top: 5px;
     font-size: 14px;
     cursor: default;
-    color: #4d4d4f;
+    color: 	#FF69B4;
 }
 
 .message {
     font-weight: 400;
     margin-top: 5px;
     font-size: 14px;
-    color: #777;
+    color: 	#FFB6C1;
     line-height: 1.5em;
 }
 
 .message b {
-    color: #262626;
+    color: 	#FFB6C1;
 }
 
 .message span {
     cursor: pointer;
-    color: #1d92ff;
+    color: #FFB6C1;
 }
 
 .details {
     margin-top: 10px;
     font-weight: 400;
-    color: #999;
+    color: #FF69B4;
 }
 
 .addComments {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #FFC0CB;
     padding: 10px 0;
 }
 
 .addComments button {
     position: absolute;
     right: 30px;
-    color: #1d92ffcb;
-    font-weight: 500;
+    color: #FF69B4;
+    font-weight: bold;
     font-size: 15px;
     border: none;
     background-color: inherit;
@@ -330,7 +333,7 @@ main .container {
     position: relative;
     font-size: 1.3rem;
     margin-right: 10px;
-    color: rgb(88, 88, 88);
+    color: #FF69B4;
 }
 
 textarea {
@@ -344,12 +347,12 @@ textarea {
     outline: none;
     font-weight: 400;
     font-size: 14px;
-    color: #262626;
+    color: #FF69B4;
     background: none;
 }
 
 textarea.text::placeholder {
-    color: #777;
+    color: #FF69B4;
 }
 
 .addComments form label {
@@ -365,7 +368,7 @@ textarea.text::placeholder {
     margin-top: 8px;
     font-weight: lighter;
     cursor: default;
-    color: rgb(163, 163, 163);
+    color: #FF69B4;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -381,7 +384,7 @@ a {
 @media screen and (max-width: 1000px) {
     .col-9 {
         width: 100%;
-        background: #fafafa;
+        background: #FF69B4;
     }
 
     .col-3 {
@@ -436,5 +439,5 @@ a {
 }
 
 .footer a:hover {
-    color: #ff0000;
+    color:#FF69B4;
 }

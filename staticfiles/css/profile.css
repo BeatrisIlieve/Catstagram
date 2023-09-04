@@ -6,6 +6,8 @@
     display: flex;
     gap: 130px;
     justify-content: center;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px #FFB6C1;
 }
 
 .profile_img img {
@@ -17,7 +19,7 @@
 }
 
 .profile a {
-    color: black;
+    color: #FFB6C1;
 }
 
 .profile .footer {
@@ -52,6 +54,7 @@
     font-weight: lighter;
     font-size: 30px;
     margin-bottom: 15px;
+
 }
 
 .personal .edit p {
@@ -87,6 +90,8 @@
 .names {
     margin-bottom: 5px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px #FFB6C1;
 }
 
 .email {
@@ -113,7 +118,7 @@
     height: 70px;
     min-width: 70px;
     min-height: 70px;
-    background: linear-gradient(to right, red, orange);
+    background: linear-gradient(to right, #FF1493, #FFB6C1);
     padding: 2px;
     margin-left: 15px;
     cursor: pointer;
@@ -148,7 +153,7 @@
 }
 
 .pet-photos {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #FFC0CB;
     width: 850px;
 }
 
@@ -157,7 +162,7 @@
     width: 400px;
     height: 400px;
     border-radius: 2px;
-    box-shadow: 4px 4px 4px 4px #888888;
+    box-shadow: 4px 4px 4px 4px #FFC0CB;
     object-fit: cover;
 }
 
@@ -173,7 +178,7 @@
 }
 
 .step-links {
-    text-shadow: 1px 1px #4b4848;
+    text-shadow: 1px 1px #FFC0CB;
 }
 
 .step-links a:hover {

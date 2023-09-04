@@ -3,13 +3,13 @@
     <div class="container">
         <div class="logo">
             <!-- Link to Home Page -->
-            <a href="#">
-                <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}" alt="img1">
+            <a href="{% url 'index' %}">
+                <img width="50px" src="{% static 'images/icon.png' %}" alt="img1">
             </a>
 
             <!-- Link to Home Page -->
-            <a class="home" href="#">
-                <i>Petstagram</i>
+            <a class="home" href="{% url 'index' %}">
+                <i>Catstagram</i>
             </a>
         </div>
 
@@ -18,28 +18,28 @@
                 <li class="nav-item">
 
                     <!-- Link to Add Pet Page -->
-                    <a href="#">
-                        <i>Add Pet</i>
+                    <a href="{% url 'add cat' %}">
+                        <i>Add Cat</i>
                     </a>
                 </li>
                 <li class="nav-item">
 
                     <!-- Link to Add Photo Page -->
-                    <a href="#">
+                    <a href="{% url 'add photo' %}">
                         <i>Add Photo</i>
                     </a>
                 </li>
                 <li class="nav-item">
 
                     <!-- Link to Login Page -->
-                    <a href="#">
+                    <a href="{% url 'login user' %}">
                         <i>Login</i>
                     </a>
                 </li>
                 <li class="nav-item">
 
                     <!-- Link to Register Page -->
-                    <a href="">
+                    <a href="{% url 'register user' %}">
                         <i>Register</i>
                     </a>
                 </li>
