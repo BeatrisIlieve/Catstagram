@@ -1,6 +1,7 @@
 # cats/models.py
 
 from django.db import models
+from django.utils.text import slugify
 
 
 class Cat(models.Model):
@@ -17,7 +18,21 @@ class Cat(models.Model):
         blank=False,
     )
 
+    slug = models.SlugField(
+        unique=True,
+        null=False,
+        blank=True,
+    )
+
     date_of_birth = models.DateField(
         null=True,
         blank=True,
     )
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if not self.slug:
+            self.slug = slugify(f'{self.id}-{self.name}')
+
+        return super().save(*args, **kwargs)
