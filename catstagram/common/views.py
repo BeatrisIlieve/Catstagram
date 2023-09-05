@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+import pyperclip
+from django.urls import reverse
 
 from catstagram.common.models import PhotoLike
+from catstagram.common.utils import get_photo_url, get_user_liked_photos
 from catstagram.photos.models import Photo
 
 
@@ -25,13 +28,7 @@ def index(request):
     return render(request, 'common/home-page.html', context)
 
 
-def get_user_liked_photos(photo_id):
-
-    return PhotoLike.objects.filter(photo_id=photo_id)
-
-
 def like_photo(request, photo_id):
-
     user_liked_photo = get_user_liked_photos(photo_id)
 
     if user_liked_photo:
@@ -42,5 +39,12 @@ def like_photo(request, photo_id):
             photo_id=photo_id,
         )
 
-    redirect_path = redirect(request.META['HTTP_REFERER'] + f'#photo-{photo_id}')
-    return redirect_path
+    return redirect(get_photo_url(request, photo_id))
+
+
+def share_photo(request, photo_id):
+    photo_details_url = reverse('details photo', kwargs={
+        'pk': photo_id,
+    })
+    pyperclip.copy(get_photo_url(request, photo_id))
+    return redirect(get_photo_url(request, photo_id))
