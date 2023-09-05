@@ -26,7 +26,7 @@ body {
     justify-content: center;
     background: rgb(255, 255, 255);
     width: 100%;
-    border: 1px solid #FFC0CB;
+    border: 1px solid #fadadd;
 }
 
 .container {
@@ -39,7 +39,7 @@ body {
 }
 
 .container a {
-    color: #FFB6C1;
+    color: #FFA7A6;
 }
 
 .errorlist li {
@@ -69,9 +69,9 @@ body {
     padding: 5px 5px 5px 0;
     text-indent: 21px;
     outline: none;
-    border: 1px solid #FFC0CB;
+    border: 1px solid #fadadd;
     border-radius: 2px;
-    color: #FF69B4;
+    color: #aa98a9;
 }
 
 .searchbar button {
@@ -91,19 +91,19 @@ body {
 
 .searchbar input::placeholder {
     font-weight: lighter;
-    color: #FF69B4;
+    color: #aa98a9;
 }
 
 .home {
     font-size: 25px;
     margin: 10px 0 0 3px;
-    color: #FF69B4;
+    color: #FFA7A6;
     font-family: 'Indie Flower', cursive;
 }
 
 .nav-links {
     font-weight: lighter;
-    color: #FF69B4;
+    color: #FFA7A6;
     /* background: #333 ; */
 }
 
@@ -113,11 +113,11 @@ body {
 }
 
 .nav-group .nav-item a {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px #aa98a9;
     font-weight: bold;
     font-size: 28px;
     display: block;
-    color: 	#FFB6C1;
+    color: 	#FFA7A6;
 }
 
 .nav-group {
@@ -171,7 +171,7 @@ main .container {
     width: 100%;
     /* min-height: 400px; */
     display: inline-block;
-    border: 1px solid #FFC0CB;
+    border: 1px solid #fadadd;
 }
 
 .col-9 .card .top {
@@ -203,7 +203,7 @@ main .container {
     overflow: hidden;
     width: 30px;
     height: 30px;
-    background: linear-gradient(to right, #FF1493, #FFC0CB);
+    background: linear-gradient(to right, #ff91a4, #fadadd);
     padding: 2px;
     margin-right: 8px;
 }
@@ -239,7 +239,7 @@ main .container {
 
 .col-9 .card .top .userDetails h3 {
     font-size: 16px;
-    color: 	#FFB6C1;
+    color: 	#aa98a9;
     font-weight: 500;
     line-height: 1em;
     white-space: nowrap; 
@@ -284,44 +284,44 @@ main .container {
     margin-top: 5px;
     font-size: 14px;
     cursor: default;
-    color: 	#FF69B4;
+    color: 	#FFA7A6;
 }
 
 .message {
     font-weight: 400;
     margin-top: 5px;
     font-size: 14px;
-    color: 	#FFB6C1;
+    color: #aa98a9;
     line-height: 1.5em;
 }
 
 .message b {
-    color: 	#FFB6C1;
+    color: 	#aa98a9;
 }
 
 .message span {
     cursor: pointer;
-    color: #FFB6C1;
+    color: #aa98a9;
 }
 
 .details {
     margin-top: 10px;
     font-weight: 400;
-    color: #FF69B4;
+    color: #aa98a9;
 }
 
 .addComments {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    border-top: 1px solid #FFC0CB;
+    border-top: 1px solid #fadadd;
     padding: 10px 0;
 }
 
 .addComments button {
     position: absolute;
     right: 30px;
-    color: #FF69B4;
+    color: #ff91a4;
     font-weight: bold;
     font-size: 15px;
     border: none;
@@ -333,7 +333,7 @@ main .container {
     position: relative;
     font-size: 1.3rem;
     margin-right: 10px;
-    color: #FF69B4;
+    color: #FFA7A6;
 }
 
 textarea {
@@ -347,12 +347,12 @@ textarea {
     outline: none;
     font-weight: 400;
     font-size: 14px;
-    color: #FF69B4;
+    color: #aa98a9;
     background: none;
 }
 
 textarea.text::placeholder {
-    color: #FF69B4;
+    color: #FFA7A6;
 }
 
 .addComments form label {
@@ -368,7 +368,7 @@ textarea.text::placeholder {
     margin-top: 8px;
     font-weight: lighter;
     cursor: default;
-    color: #FF69B4;
+    color: #aa98a9;;
     font-size: 12px;
     text-transform: uppercase;
 }
@@ -384,7 +384,7 @@ a {
 @media screen and (max-width: 1000px) {
     .col-9 {
         width: 100%;
-        background: #FF69B4;
+        background: white;
     }
 
     .col-3 {
@@ -439,5 +439,5 @@ a {
 }
 
 .footer a:hover {
-    color:#FF69B4;
+    color:#FFA7A6;;
 }

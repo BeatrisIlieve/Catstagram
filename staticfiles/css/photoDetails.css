@@ -1,6 +1,7 @@
 .userDetails a {
-    color: rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 4px #FFB6C1;
+    color: #FFA7A6;
+    text-shadow: 1px 1px 2px #aa98a9;
+    font-weight: bold;
 }
 
 .pet-details {
@@ -10,19 +11,21 @@
 .comments {
     display: flex;
     margin-top: 10px;
-    border-top: 1px solid #FFC0CB;
+    border-top: 1px solid #FFA7A6;
 }
 
 .comments .userDetails {
+    color: #FFA7A6;
     display: block !important;
 }
 
 .comments span {
-    color: #FFB6C1;
+    color: #FFA7A6;
     font-size: 10px;
 }
 
 .comments h3 {
+    color: #FFA7A6;
     display: flex;
     word-wrap: break-word;
     white-space: normal;
@@ -30,6 +33,7 @@
 
 .comments .top {
     padding: 10px !important;
+    color: #FFA7A6;
 }
 
 .comment-data {
@@ -38,14 +42,16 @@
     word-break: break-all;
     white-space: normal;
     font-weight: bold;
-    color: #FFB6C1;
+    color: #FFA7A6;
 }
 
 .comment-data h3 {
     margin-top: 5px;
+    color: #FFA7A6;
 }
 
 .comment-data p {
+    color: #FFA7A6;
     margin-top: 4px;
     font-size: 13px;
     word-wrap: break-word;
@@ -55,6 +61,7 @@
 
 .add-comment-details .addComments {
     margin-top: 0 !important;
+    color: #FFA7A6;
 }
 
 .edit-delete-btns {

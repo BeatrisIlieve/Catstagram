@@ -1,19 +1,19 @@
 .login-register-div {
 	margin-top: 13%;
-	color: rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 4px #FFB6C1;
+	color: #FFA7A6;
+    text-shadow: 2px 2px 4px #aa98a9;
 }
 
 .login-register-box, .second-option {
 	display: block;
 	width: 300px;
 	background-color: rgb(255, 255, 255);
-	border: 1px solid #FFB6C1;
+	border: 1px solid #fadadd;
 	padding: 40px;
 	margin-bottom: 15px;
 	border-radius: 3px;
 	border: 1px solid;
-	box-shadow: 1px 2px 3px 	#FFC0CB;
+	box-shadow: 1px 2px 3px #aa98a9;
 }
 
 .login-register-box h1 {
@@ -29,7 +29,7 @@
 
 .login-register-box input {
 	background-color: rgb(240, 230, 230);
-	border: 0.1px solid #FFB6C1;
+	border: 0.1px solid #fadadd;
 	border-radius: 3px;
 	height: 30px;
 	width: 100%;
@@ -38,8 +38,8 @@
 }
 
 .login-register-box button {
-	background-color: #FF69B4;
-	color: white;
+	background-color: rgb(240, 230, 230);
+	color:  #FFA7A6;
 	font-weight: bold;
 	border: none;
 	width: 100%;
