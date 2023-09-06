@@ -4,17 +4,8 @@ from django.urls import reverse
 
 from catstagram.common.models import PhotoLike
 from catstagram.common.utils import get_photo_url, get_user_liked_photos
+from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 from catstagram.photos.models import Photo
-
-
-def apply_likes_count(photo):
-    photo.likes_count = photo.photolike_set.count()
-    return photo
-
-
-def apply_user_liked_photo(photo):
-    photo.is_liked_by_user = photo.likes_count > 0
-    return photo
 
 
 def index(request):

@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from catstagram.core.model_mixins import StrFromFieldsMixin
+from catstagram.photos.validators import validate_file_less_than_5mb
 
 
 class Cat(StrFromFieldsMixin, models.Model):
@@ -17,9 +18,11 @@ class Cat(StrFromFieldsMixin, models.Model):
         blank=False,
     )
 
-    personal_photo = models.URLField(
+    personal_photo = models.ImageField(
+        upload_to='mediafiles/cat_photos/',
         null=False,
         blank=False,
+        validators=(validate_file_less_than_5mb,),
     )
 
     slug = models.SlugField(
