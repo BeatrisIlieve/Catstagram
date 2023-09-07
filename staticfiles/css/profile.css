@@ -6,8 +6,10 @@
     display: flex;
     gap: 130px;
     justify-content: center;
-    color: rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 4px #FFB6C1;
+    color: #aa98a9;
+    text-shadow: 1px 1px 2px #FFA7A6;
+    font-family: Snell Roundhand, cursive;
+    font-size: 25px;
 }
 
 .profile_img img {

@@ -4,13 +4,13 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 body {
     font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
         Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    background: #fafafa;
+    background: white;
     min-height: 100vh;
 }
 
@@ -40,6 +40,7 @@ body {
 
 .container a {
     color: #FFA7A6;
+    font-family: Snell Roundhand, cursive;
 }
 
 .errorlist li {
@@ -91,14 +92,17 @@ body {
 
 .searchbar input::placeholder {
     font-weight: lighter;
+    font-size: 16px;
     color: #aa98a9;
+    font-family: Snell Roundhand, cursive;
+
 }
 
 .home {
-    font-size: 25px;
+    font-size: 40px;
     margin: 10px 0 0 3px;
     color: #FFA7A6;
-    font-family: 'Indie Flower', cursive;
+    text-shadow: 1px 1px 2px #aa98a9;
 }
 
 .nav-links {
@@ -113,9 +117,9 @@ body {
 }
 
 .nav-group .nav-item a {
-    text-shadow: 2px 2px 4px #aa98a9;
+    text-shadow: 1px 1px 2px #aa98a9;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 32px;
     display: block;
     color: 	#FFA7A6;
 }
@@ -238,7 +242,8 @@ main .container {
 }
 
 .col-9 .card .top .userDetails h3 {
-    font-size: 16px;
+    font-size: 28px;
+    font-family: Snell Roundhand, cursive;
     color: 	#aa98a9;
     font-weight: 500;
     line-height: 1em;
@@ -282,32 +287,38 @@ main .container {
 .likes {
     font-weight: bold;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px #FFA7A6;
     cursor: default;
-    color: 	#FFA7A6;
+    color: 	#aa98a9;
+    font-family: Snell Roundhand, cursive;
 }
 
 .message {
     font-weight: 400;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 18px;
     color: #aa98a9;
     line-height: 1.5em;
 }
 
 .message b {
     color: 	#aa98a9;
+    font-family: Snell Roundhand, cursive;
 }
 
 .message span {
     cursor: pointer;
     color: #aa98a9;
+    font-family: Snell Roundhand, cursive;
 }
 
 .details {
     margin-top: 10px;
     font-weight: 400;
     color: #aa98a9;
+    font-size: 20px;
+    font-family: Snell Roundhand, cursive;
 }
 
 .addComments {
@@ -318,12 +329,14 @@ main .container {
     padding: 10px 0;
 }
 
+
 .addComments button {
     position: absolute;
     right: 30px;
-    color: #ff91a4;
+    color: #FFA7A6;
+    font-family: Snell Roundhand, cursive;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 30px;
     border: none;
     background-color: inherit;
     cursor: pointer;
@@ -369,8 +382,10 @@ textarea.text::placeholder {
     font-weight: lighter;
     cursor: default;
     color: #aa98a9;;
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
+    font-family: Snell Roundhand, cursive;
+
 }
 
 a {
@@ -428,6 +443,7 @@ a {
 .footer {
     text-align: center;
     margin-bottom: 20px;
+    color: #aa98a9;
 }
 
 .footer .footer-section {
