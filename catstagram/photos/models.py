@@ -17,7 +17,7 @@ class Photo(StrFromFieldsMixin, models.Model):
     MAX_LOCATIONS_LENGTH = 30
 
     photo = models.ImageField(
-        upload_to='mediafiles/cat_photos/',
+        upload_to='cat_photos/',
         null=False,
         blank=True,
         validators=(validate_file_less_than_5mb,),

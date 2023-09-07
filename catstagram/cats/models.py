@@ -19,7 +19,7 @@ class Cat(StrFromFieldsMixin, models.Model):
     )
 
     personal_photo = models.ImageField(
-        upload_to='mediafiles/cat_photos/',
+        upload_to='cat_photos/',
         null=False,
         blank=False,
         validators=(validate_file_less_than_5mb,),

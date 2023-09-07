@@ -1,15 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
+from catstagram.cats.models import Cat
 from catstagram.cats.utils import get_cat_by_name_and_username
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
-
-
-def add_cat(request):
-    return render(request, 'cats/cat-add-page.html')
-
-
-def delete_cat(request, username, cat_slug):
-    return render(request, 'cats/cat-delete-page.html')
 
 
 def details_cat(request, username, cat_slug):
@@ -27,5 +21,66 @@ def details_cat(request, username, cat_slug):
     return render(request, 'cats/cat-details-page.html', context)
 
 
+def add_cat(request):
+
+    if request.method == 'GET':
+        form = CatAddForm()
+
+    else:
+        form = CatAddForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('details user', pk=1)
+
+    context = {
+        'form': CatAddForm(),
+    }
+
+    return render(request, 'cats/cat-add-page.html', context)
+
+
 def edit_cat(request, username, cat_slug):
-    return render(request, 'cats/cat-edit-page.html')
+
+    cat = Cat.objects.filter(slug=cat_slug).get()
+
+    if request.method == "GET":
+        form = CatEditForm(instance=cat)
+
+    else:
+        form = CatEditForm(request.POST, instance=cat)
+
+        if form.is_valid():
+            form.save()
+            return redirect('details cat', username=username, cat_slug=cat_slug)
+
+    context = {
+        'form': form,
+        'cat_slug': cat_slug,
+        'username': username,
+    }
+
+    return render(request, 'cats/cat-edit-page.html', context)
+
+
+def delete_cat(request, username, cat_slug):
+
+    cat = Cat.objects.filter(slug=cat_slug).get()
+
+    if request.method == "GET":
+        form = CatDeleteForm(instance=cat)
+
+    else:
+        form = CatDeleteForm(request.POST, instance=cat)
+
+        if form.is_valid():
+            form.save()
+            return redirect('details user',pk=1)
+
+    context = {
+        'form': form,
+        'cat_slug': cat_slug,
+        'username': username,
+    }
+
+    return render(request, 'cats/cat-delete-page.html', context)
