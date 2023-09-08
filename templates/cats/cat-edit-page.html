@@ -1,16 +1,17 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <!-- Start Edit Pet Section -->
+    <!-- Start Edit cat Section -->
     <div class="edit-delete edit-photo">
         <h2>Edit Cat</h2>
-        <!-- Start Edit Pet From -->
-        <form method="post" action="{% url 'edit cat' username=username cat_slug=cat_slug%}">
+        <!-- Start Edit cat From -->
+        <form method="post" action="{% url 'edit cat' username=username cat_slug=cat_slug %}"
+              enctype="multipart/form-data">
             {{ form.as_p }}
             <button class="edit-btn" type="submit">Edit</button>
             {% csrf_token %}
         </form>
-        <!-- End Edit Pet Form -->
+        <!-- End Edit cat Form -->
 
     </div>
-    <!-- End Edit Pet Section -->
+    <!-- End Edit cat Section -->
 {% endblock %}

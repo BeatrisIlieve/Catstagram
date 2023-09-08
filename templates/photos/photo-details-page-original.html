@@ -12,7 +12,7 @@
                     <div class="userDetails">
 
                         <!-- Link to User Profile Details Page-->
-                        <a href="{% url 'details user' pk=1 %}">
+                        <a href="#">
                             <div class="profilepic">
                                 <div class="profile_img">
                                     <div class="image">
@@ -33,8 +33,9 @@
                             <br>
 
                             {% if photo.location %}
-                                <span>{{ photo.locations }}</span>
+                            <span>{{ photo.locations }}</span>
                             {% endif %}
+
                             <!-- IF the viewer is the creator of the photo -->
                             <div class="edit-delete-btns">
 
@@ -46,8 +47,7 @@
 
                                 <!-- Link to Delete cat Photo Page -->
                                 <a href="{% url 'delete photo' pk=photo.pk %}">
-                                    <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}"
-                                         alt="bin button">
+                                    <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
                                 </a>
                             </div>
                             <!-- End IF the viewer is the creator of the photo -->
@@ -61,8 +61,7 @@
                 <!-- Start cat Photo -->
                 <div class="imgBx" id="place the id of the photo here">
                     <!-- cat Photo -->
-                    <img src="/media/{{ photo.photo }}" alt="photo of the cats {{ photo.tagged_cats.all|join:', ' }}"
-                         class="cover">
+                    <img src="/media/{{ photo.photo }}" alt="photo of the cats {{ photo.tagged_cats.all|join:', ' }}" class="cover">
                 </div>
                 <!-- End cat Photo -->
 
@@ -75,29 +74,34 @@
                             <!-- Start Like Button -->
                             <span class="heart">
 
+                                    <!-- Link to Like Path -->
 									<a href="{% url 'like photo' photo_id=photo.pk %}">
-										{% if photo.is_liked_by_user %}
-                                            <svg style="color: #FFA7A6"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 width="24"
-                                                 height="24"
-                                                 fill="currentColor"
-                                                 class="bi bi-heart-fill"
-                                                 viewBox="0 0 16 16">
+                                        {% if has_user_liked_photo %}
+										<!-- IF user has liked the photo -->
+                                        <svg style="color: red"
+                                             xmlns="http://www.w3.org/2000/svg"
+                                             width="24"
+                                             height="24"
+                                             fill="currentColor"
+                                             class="bi bi-heart-fill"
+                                             viewBox="0 0 16 16">
+                                            <!-- Coordinate path -->
                                             <path fill-rule="evenodd"
                                                   d="M8 1.314C12.438-3.248 23.534 4.735
                                                   8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                                                  fill=#FFA7A6>
+                                                  fill="red">
                                             </path>
                                         </svg>
                                         {% else %}
-                                            <svg aria-label="Like"
-                                                 color="#262626"
-                                                 fill="#FFA7A6"
-                                                 height="24"
-                                                 role="img"
-                                                 viewBox="0 0 48 48"
-                                                 width="24">
+                                        <!-- IF NOT user has liked the photo -->
+                                        <svg aria-label="Like"
+                                             color="#262626"
+                                             fill="#262626"
+                                             height="24"
+                                             role="img"
+                                             viewBox="0 0 48 48"
+                                             width="24">
+                                        <!-- Coordinate path -->
                                         <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4
                                                     11.5 0 6.8-5.9 11-11.5 16S25 41.3 24
                                                     41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3
@@ -111,12 +115,17 @@
                                                     7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6
                                                     48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
                                         </path>
-                                    </svg>
-                                            </a>
-                                            </span>
+                                        </svg>
                                         {% endif %}
-                            <a href="{% url 'share photo' photo_id=photo.pk %}">
-                                <svg aria-label="Share Post" class="_8-yf5 " color="#FFA7A6" fill="#FFA7A6"
+								    </a>
+                            </span>
+                            <!-- End Like Button -->
+
+                            <!-- Start Share  Button -->
+
+                            <!-- Link to Share Path -->
+                            <a href="#">
+                                <svg aria-label="Share Post" class="_8-yf5 " color="#262626" fill="#262626"
                                      height="24" role="img" viewBox="0 0 48 48" width="24">
                                     <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3
 										3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6
@@ -129,48 +138,84 @@
                             </a>
                         </div>
                     </div>
-                    <p class="likes">{{ photo.likes_count }} likes</p>
-                    {% for cat in photo.tagged_cats.all %}
-                        <a href="{% url 'details cat' username='beatris' cat_slug=cat.slug %}">
-                            <p class="message">
-                                <b>{{ cat.name }}</b>
-                            </p>
-                        </a>
-                    {% endfor %}
-                    <h5 class="postTime">{{ photo.publication_date }}</h5>
-                    {% for comment in photo.photocomment_set.all %}
-                        <div class="comments">
-                            <div class="top">
-                                <div class="userDetails">
-                                    <div class="comment-data">
-                                        <div class="profilepic">
-                                            <div class="profile_img">
-                                                <div class="image">
-                                                    <!-- User Profile Image -->
-                                                    <img src="{% static 'images/person.png' %}" alt="img8">
-                                                </div>
+                    <!-- End Like and Share Buttons Section -->
+
+                    <!-- Number of Likes for the Photo -->
+                    <p class="likes">{{ likes_count }}</p>
+
+                    <!-- Start Tagged cats Section-->
+                    <!-- Link to First Tagged cat Details Page -->
+                    <a href="#">
+                        <p class="message">
+                            <b>Sasho</b>
+                        </p>
+                    </a>
+                    <!-- Link to Second Tagged cat Details Page -->
+                    <a href="#">
+                        <p class="message">
+                            <b>Some other fish</b>
+                        </p>
+                    </a>
+                    <!-- End Tagged cats Section-->
+
+                    <!-- Photo description -->
+                    <p class="cat-details">This is my cat</p>
+
+                    <!-- Date of Publication or edit of the Photo -->
+                    <h5 class="postTime">19/09/2022</h5>
+
+                    <!-- Start Comments Section -->
+                    <div class="comments">
+                        <div class="top">
+                            <div class="userDetails">
+                                <div class="comment-data">
+                                    <div class="profilepic">
+                                        <div class="profile_img">
+                                            <div class="image">
+                                                <!-- User Profile Image -->
+                                                <img src="{% static '/images/person.png' %}" alt="img8">
                                             </div>
                                         </div>
-                                        <p>
-                                            <a href="">Beatris Ilieve : </a>
-                                            {{ comment.text }}
-                                        </p>
                                     </div>
-                                    <span>{{ comment.publication_date_and_time }}</span>
+                                    <p>
+                                        <!-- Link to User Profile Details Page-->
+                                        <!-- User First and/or Last Name or username-->
+                                        <a href="">Steven Ivanov</a>
+                                        <!-- User Comment -->
+                                        - OMG where can i get one
+                                    </p>
                                 </div>
+                                <span>Sept. 20, 2022, 5:02 p.m.</span>
                             </div>
                         </div>
-                    {% endfor %}
-                    <div class="addComments">
-                        <div class="reaction">
-                            <h3>
-                                <i class="far fa-smile"></i>
-                            </h3>
-                        </div>
-                        <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
-                            {{ comment_form }}
-                            <button type="submit">Post</button>
-                            {% csrf_token %}
-                        </form>
                     </div>
+                    <!-- End Comments Section -->
+                </div>
+
+                <!-- Start Add Comments Section -->
+                <div class="addComments">
+                    <div class="reaction">
+                        <h3>
+                            <i class="far fa-smile"></i>
+                        </h3>
+                    </div>
+
+                    <!-- Start Add Comments Form -->
+                    <form method="post" action="#">
+                        <label for="id_body">Body:</label>
+                        <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
+                                  required="" id="id_body"></textarea>
+                        <!-- Post Comments Button -->
+                        <button type="submit">Post</button>
+                    </form>
+                    <!-- End Add Comments Form -->
+
+                </div>
+                <!-- End Add Comments Section -->
+
+            </div>
+            <!-- End cat Photo Post Section -->
+
+        </div>
+    </div>
 {% endblock %}

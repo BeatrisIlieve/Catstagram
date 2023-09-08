@@ -145,21 +145,21 @@
     object-fit: cover;
 }
 
-.head-pet {
+.head-cat {
     display: block;
     text-align: center;
 }
 
-.head-pet p {
+.head-cat p {
     margin-left: 13px;
 }
 
-.pet-photos {
+.cat-photos {
     border-top: 1px solid #FFC0CB;
     width: 850px;
 }
 
-.pet-photos img {
+.cat-photos img {
     margin: 10px;
     width: 400px;
     height: 400px;
@@ -168,7 +168,7 @@
     object-fit: cover;
 }
 
-.pet-photos img:hover {
+.cat-photos img:hover {
     box-shadow: none;
 }
 

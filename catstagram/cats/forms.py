@@ -7,7 +7,7 @@ from catstagram.core.form_mixins import DisabledFormMixin
 class CatBaseForm(forms.ModelForm):
     class Meta:
         model = Cat
-        fields = ('name', 'date_of_birth', 'personal_photo')
+        fields = ('personal_photo', 'name', 'date_of_birth')
         labels = {
             'name': 'Cat Name',
             'personal_photo': 'Cat Photo',
@@ -26,11 +26,7 @@ class CatBaseForm(forms.ModelForm):
                     'type': 'date',
                 }
             ),
-            # 'personal_photo': forms.ImageField(
-            #     attrs={
-            #         'placeholder': 'No file chosen',
-            #     }
-            # ),
+            # 'personal_photo': forms.ImageField(),
         }
 
 

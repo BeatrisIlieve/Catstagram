@@ -73,6 +73,7 @@ body {
     border: 1px solid #fadadd;
     border-radius: 2px;
     color: #aa98a9;
+    font-family: Snell Roundhand, cursive;
 }
 
 .searchbar button {
@@ -205,8 +206,8 @@ main .container {
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(to right, #ff91a4, #fadadd);
     padding: 2px;
     margin-right: 8px;
@@ -242,7 +243,8 @@ main .container {
 }
 
 .col-9 .card .top .userDetails h3 {
-    font-size: 28px;
+    font-size: 30px;
+    font-weight: bold;
     font-family: Snell Roundhand, cursive;
     color: 	#aa98a9;
     font-weight: 500;
@@ -287,7 +289,7 @@ main .container {
 .likes {
     font-weight: bold;
     margin-top: 5px;
-    font-size: 20px;
+    font-size: 24px;
     text-shadow: 1px 1px 2px #FFA7A6;
     cursor: default;
     color: 	#aa98a9;
@@ -297,7 +299,7 @@ main .container {
 .message {
     font-weight: 400;
     margin-top: 5px;
-    font-size: 18px;
+    font-size: 22px;
     color: #aa98a9;
     line-height: 1.5em;
 }
@@ -379,10 +381,10 @@ textarea.text::placeholder {
 
 .postTime {
     margin-top: 8px;
-    font-weight: lighter;
     cursor: default;
     color: #aa98a9;;
     font-size: 16px;
+    font-weight: bold;
     text-transform: uppercase;
     font-family: Snell Roundhand, cursive;
 
@@ -390,6 +392,7 @@ textarea.text::placeholder {
 
 a {
     text-decoration: none;
+    font-size: 1px;
 }
 
 .hidden {

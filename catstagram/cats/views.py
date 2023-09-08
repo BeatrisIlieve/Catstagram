@@ -15,7 +15,6 @@ def details_cat(request, username, cat_slug):
         'cat': cat,
         'photos_count': cat.photo_set.count(),
         'cat_photos': photos,
-
     }
 
     return render(request, 'cats/cat-details-page.html', context)
@@ -27,7 +26,7 @@ def add_cat(request):
         form = CatAddForm()
 
     else:
-        form = CatAddForm(request.POST)
+        form = CatAddForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -48,7 +47,7 @@ def edit_cat(request, username, cat_slug):
         form = CatEditForm(instance=cat)
 
     else:
-        form = CatEditForm(request.POST, instance=cat)
+        form = CatEditForm(request.POST, request.FILES, instance=cat, )
 
         if form.is_valid():
             form.save()

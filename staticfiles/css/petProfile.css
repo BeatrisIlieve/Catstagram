@@ -1,14 +1,14 @@
-.pet-profile {
+.cat-profile {
     width: 50%;
     margin-bottom: 20px;
 }
 
-.pet-profile .profile-data {
+.cat-profile .profile-data {
     gap: 50px;
     margin-bottom: 20px;
 }
 
-.pet-profile .footer {
+.cat-profile .footer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -17,7 +17,7 @@
     font-family: sans-serif;
 }
 
-.pet-posts {
+.cat-posts {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -25,7 +25,7 @@
     flex-wrap: wrap;
 }
 
-.pet-posts .card {
+.cat-posts .card {
     margin-top: 20px;
     position: relative;
     width: 100%;
@@ -34,24 +34,24 @@
     flex-basis: 100%;
 }
 
-.pet-posts .card .top {
+.cat-posts .card .top {
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.pet-posts .card .bottom {
+.cat-posts .card .bottom {
     padding: 10px 20px;
 }
 
-.pet-posts .card .top .userDetails {
+.cat-posts .card .top .userDetails {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.pet-posts h3 {
+.cat-posts h3 {
     font-size: 28px !important;
     color: #aa98a9 !important;
     font-family: Snell Roundhand, cursive;

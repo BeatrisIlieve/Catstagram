@@ -1,10 +1,7 @@
 {% load static %}
 <div class="card">
-
-    <!-- Start User Details and Image Location -->
     <div class="top">
         <div class="userDetails">
-            <!-- Link to User Profile Page -->
             <a href="{% url 'details user' pk=1 %}">
                 <div class="profilepic">
                     <div class="profile_img">
@@ -15,33 +12,25 @@
                 </div>
             </a>
             <h3>
-                <!-- Link to User Profile Page -->
                 <a href="#">
-                    <!-- if user has first name and last name -->
                     Beatris Ilieve
-                    <!-- else -->
-                    <!-- show user username -->
                 </a>
                 <br>
                 {% if photo.locations %}
                     <span>{{ photo.locations }}</span>
                 {% endif %}
+                {% if photo.description %}
+                    <p class="cat-details">{{ photo.description }}</p>
+                {% endif %}
             </h3>
         </div>
     </div>
-    <!-- End User Details and Image Location -->
-
-    <!-- Start Pet Photo -->
     <div class="imgBx" id="photo-{{ photo.pk }}">
-        <img src="{% static 'images/beauty.jpg' %}" alt="post" class="cover">
+        <img src="/media/{{ photo.photo }}" alt="post" class="cover">
     </div>
-    <!-- End Pet Photo -->
-
-    <!-- Start Like and Share Buttons -->
     <div class="bottom">
         <div class="actionBtns">
             <div class="left">
-                <!-- Start Like Button -->
                 <span class="heart">
 									<a href="{% url 'like photo' photo_id=photo.pk %}">
 										{% if photo.is_liked_by_user %}
@@ -52,23 +41,20 @@
                                                  fill="currentColor"
                                                  class="bi bi-heart-fill"
                                                  viewBox="0 0 16 16">
-                                            <!-- Coordinate path -->
                                             <path fill-rule="evenodd"
                                                   d="M8 1.314C12.438-3.248 23.534 4.735
                                                   8 15-7.534 4.736 3.562-3.248 8 1.314z"
                                                   fill=#FFA7A6>
-
                                             </path>
                                         </svg>
                                         {% else %}
                                             <svg aria-label="Like"
                                                  color="#262626"
-                                                 fill="#262626"
+                                                 fill="#FFA7A6"
                                                  height="24"
                                                  role="img"
                                                  viewBox="0 0 48 48"
                                                  width="24">
-                                        <!-- Coordinate path -->
                                         <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4
                                                     11.5 0 6.8-5.9 11-11.5 16S25 41.3 24
                                                     41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3
@@ -86,10 +72,8 @@
                                             </a>
                                             </span>
                                         {% endif %}
-
-                <!-- Start Share Button -->
                 <a href="{% url 'share photo' photo_id=photo.pk %}">
-                    <svg aria-label="Share Post" class="_8-yf5 " color="#262626" fill="#FFA7A6"
+                    <svg aria-label="Share Post" class="_8-yf5 " color="#FFA7A6" fill="#FFA7A6"
                          height="24" role="img" viewBox="0 0 48 48" width="24">
                         <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3
 										3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6
@@ -100,15 +84,9 @@
                         </path>
                     </svg>
                 </a>
-                <!-- End Share Button -->
-
             </div>
         </div>
-        <!-- End Like and Share Buttons -->
-
-        <!-- Number of Likes per Photo -->
         <p class="likes">{{ photo.likes_count }} likes</p>
-
         {% for cat in photo.tagged_cats.all %}
             <a href="{% url 'details cat' username='beatris' cat_slug=cat.slug %}">
                 <p class="message">
@@ -116,14 +94,10 @@
                 </p>
             </a>
         {% endfor %}
-        <!-- Link to Photo Details Page -->
         <a href="{% url 'details photo' pk=photo.pk %}">
             <h4 class="details">See details...</h4>
         </a>
-
-        <!-- Date of Publication -->
         <h5 class="postTime">{{ photo.publication_date }}</h5>
-
         {% for comment in photo.photocomment_set.all %}
             <div class="comments">
                 <div class="top">
@@ -138,37 +112,26 @@
                                 </div>
                             </div>
                             <p>
-                                <!-- Link to User Profile Details Page-->
-                                <!-- User First and/or Last Name or username-->
-                                <a href="">Beatris Ilieve</a>
-                                <!-- User Comment -->
+                                <a href="">Beatris Ilieve : </a>
                                 {{ comment.text }}
                             </p>
                         </div>
-                        <span>{{ comment.publication_date }}</span>
+                        <span>{{ comment.publication_date_and_time }}</span>
                     </div>
                 </div>
             </div>
         {% endfor %}
-
-        <!-- Start Add Comments Section -->
         <div class="addComments">
             <div class="reaction">
                 <h3>
                     <i class="far fa-smile"></i>
                 </h3>
             </div>
-            <!-- Start Add Comments Form -->
-            <form method="post" action="#">
-                <label for="id_body">Body:</label>
-                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                          required="" id="id_body"></textarea>
+            <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
+                {{ comment_form }}
                 <button type="submit">Post</button>
+                {% csrf_token %}
             </form>
-            <!-- End Add Comments Form -->
-
         </div>
-        <!-- End Add Comments Section -->
-
     </div>
 </div>
