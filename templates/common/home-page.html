@@ -3,8 +3,6 @@
 {% block page_content %}
     <div class="container">
         <div class="col-9">
-
-            <!-- Start Searchbar Form -->
             <form class="searchbar" method="get" action="{% url 'index' %}">
                 {{ search_form }}
                 <button>
@@ -12,14 +10,9 @@
                 </button>
                 {% csrf_token %}
             </form>
-            <!-- End Searchbar Form -->
             {% for photo in photos %}
                 {% include 'base/partials/photo-item.html' with photo=photo %}
             {% endfor %}
-
-
-            <!-- End cat Photos Post Section -->
-
         </div>
     </div>
 {% endblock %}

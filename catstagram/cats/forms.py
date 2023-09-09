@@ -7,10 +7,11 @@ from catstagram.core.form_mixins import DisabledFormMixin
 class CatBaseForm(forms.ModelForm):
     class Meta:
         model = Cat
-        fields = ('personal_photo', 'name', 'date_of_birth')
+
+        fields = ('name', 'date_of_birth', 'personal_photo',)
         labels = {
             'name': 'Cat Name',
-            'personal_photo': 'Cat Photo',
+            'personal_photo': '',
             'date_of_birth': 'Date of Birth',
         }
 
@@ -26,7 +27,6 @@ class CatBaseForm(forms.ModelForm):
                     'type': 'date',
                 }
             ),
-            # 'personal_photo': forms.ImageField(),
         }
 
 
@@ -39,7 +39,23 @@ class CatEditForm(CatBaseForm):
 
 
 class CatDeleteForm(DisabledFormMixin, CatBaseForm):
-    disabled_fields = '__all__'
+    class Meta:
+        model = Cat
+
+        fields = ('name',)
+        labels = {
+            'name': 'Cat Name',
+        }
+
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Cat Name',
+                }
+            ),
+        }
+
+    disabled_fields = ('name',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

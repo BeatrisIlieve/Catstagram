@@ -7,9 +7,10 @@
     gap: 130px;
     justify-content: center;
     color: #aa98a9;
-    text-shadow: 1px 1px 2px #FFA7A6;
+    font-weight: bold;
+    /*text-shadow: 1px 1px 2px #FFA7A6;*/
     font-family: Snell Roundhand, cursive;
-    font-size: 25px;
+    font-size: 28px;
 }
 
 .profile_img img {
@@ -91,9 +92,9 @@
 
 .names {
     margin-bottom: 5px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 4px #FFB6C1;
+    font-family: Snell Roundhand, cursive;
+    color: #FFA7A6;
+    text-shadow: 1px 1px 2px #aa98a9;
 }
 
 .email {
@@ -120,7 +121,7 @@
     height: 70px;
     min-width: 70px;
     min-height: 70px;
-    background: linear-gradient(to right, #FF1493, #FFB6C1);
+    background: linear-gradient(to right, #ff91a4, #fadadd);
     padding: 2px;
     margin-left: 15px;
     cursor: pointer;
@@ -155,7 +156,7 @@
 }
 
 .cat-photos {
-    border-top: 1px solid #FFC0CB;
+    border-top: 1px solid #FFA7A6;
     width: 850px;
 }
 
@@ -164,7 +165,7 @@
     width: 400px;
     height: 400px;
     border-radius: 2px;
-    box-shadow: 4px 4px 4px 4px #FFC0CB;
+    box-shadow: 4px 4px 4px 4px #FFA7A6;
     object-fit: cover;
 }
 
@@ -180,7 +181,7 @@
 }
 
 .step-links {
-    text-shadow: 1px 1px #FFC0CB;
+    text-shadow: 1px 1px #FFA7A6;
 }
 
 .step-links a:hover {

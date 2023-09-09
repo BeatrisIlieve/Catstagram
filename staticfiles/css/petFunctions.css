@@ -15,32 +15,39 @@
     color:  #FFA7A6;
     text-shadow: 2px 2px 4px #aa98a9;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #FF69B4;
+    border: 1px solid #FFA7A6;
     padding: 40px;
     margin-bottom: 15px;
     border-radius: 3px;
     border: 1px solid;
-    box-shadow: 1px 2px 3px #FFC0CB;
+    box-shadow: 6px 8px 12px #aa98a9;
 }
 
 .edit-delete h2 {
-    color:  #FFA7A6;
-    text-shadow: 2px 2px 4px #aa98a9;
+    color: #aa98a9;
+    text-shadow: 1px 1px 2px #FFA7A6;
+    font-family: Snell Roundhand, cursive;
+    font-size: 40px;
+    font-weight: bold;
     text-align: center;
     margin-top: -10px;
-    text-shadow: 1px 1px #aa98a9;
+
 }
 
 .edit-delete label {
-    color:  #FFA7A6;
-    text-shadow: 2px 2px 4px #aa98a9;
+    color: #aa98a9;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Snell Roundhand, cursive;
     display: none;
 }
 
 .edit-delete input, select {
-    color: #FF69B4;
-    background-color: rgb(240, 230, 230);
-    border: 0.1px solid rgb(186, 184, 184);
+    color: #aa98a9;
+    font-family: Snell Roundhand, cursive;
+    font-size: 22px;
+    background-color: white;
+    border: 0.1px solid #FFA7A6;
     border-radius: 3px;
     height: 30px;
     padding-left: 2px;
@@ -50,7 +57,9 @@
 .edit-delete button {
     color: white;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 28px;
+
+    font-family: Snell Roundhand, cursive;
     border: none;
     width: 100%;
     border-radius: 3px;
@@ -65,7 +74,9 @@
 }
 
 .edit-delete a {
-    color: white;
+    color: #aa98a9;
+    font-size: 16px;
+    font-family: Snell Roundhand, cursive;
 }
 
 .edit-photo select {
@@ -95,15 +106,16 @@
 }
 
 .edit-photo p {
-    display: flex;
+    display: flex; flex-direction: column;
 }
 
+
 .delete-btn {
-    background-color: #FF69B4;
+    background-color: #aa98a9;
 }
 
 .edit-btn {
-    background-color: #FF69B4;
+    background-color: #FFA7A6;
 }
 
 .add-btn {

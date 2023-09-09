@@ -3,15 +3,9 @@
 {% block page_content %}
     <div class="container">
         <div class="col-9">
-
-            <!-- Start cat Photo Post Section -->
             <div class="card">
                 <div class="top">
-
-                    <!-- Start User Details and Image Location Section -->
                     <div class="userDetails">
-
-                        <!-- Link to User Profile Details Page-->
                         <a href="{% url 'details user' pk=1 %}">
                             <div class="profilepic">
                                 <div class="profile_img">
@@ -22,59 +16,34 @@
                             </div>
                         </a>
                         <h3>
-
-                            <!-- Link to User Profile Details Page -->
                             <a href="#">
-                                <!-- IF user has first name and last name -->
                                 Beatris Ilieve
-                                <!-- else -->
-                                <!-- show user username -->
                             </a>
                             <br>
-
                             {% if photo.location %}
                                 <span>{{ photo.locations }}</span>
                             {% endif %}
-                            <!-- IF the viewer is the creator of the photo -->
                             <div class="edit-delete-btns">
-
-                                <!-- Link to Edit cat Photo Page -->
                                 <a href="{% url 'edit photo' pk=photo.pk %}">
                                     <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}"
                                          alt="edit button">
                                 </a>
-
-                                <!-- Link to Delete cat Photo Page -->
                                 <a href="{% url 'delete photo' pk=photo.pk %}">
                                     <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}"
                                          alt="bin button">
                                 </a>
                             </div>
-                            <!-- End IF the viewer is the creator of the photo -->
-
                         </h3>
                     </div>
-                    <!-- End User Details and Image Location Section -->
-
                 </div>
-
-                <!-- Start cat Photo -->
                 <div class="imgBx" id="place the id of the photo here">
-                    <!-- cat Photo -->
                     <img src="/media/{{ photo.photo }}" alt="photo of the cats {{ photo.tagged_cats.all|join:', ' }}"
                          class="cover">
                 </div>
-                <!-- End cat Photo -->
-
                 <div class="bottom">
-
-                    <!-- Start Like and Share Buttons Section -->
                     <div class="actionBtns">
                         <div class="left">
-
-                            <!-- Start Like Button -->
                             <span class="heart">
-
 									<a href="{% url 'like photo' photo_id=photo.pk %}">
 										{% if photo.is_liked_by_user %}
                                             <svg style="color: #FFA7A6"

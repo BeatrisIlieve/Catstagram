@@ -15,7 +15,7 @@ body {
 }
 
 .error {
-    color: #FF1493;
+    color: #ce4676;
 }
 
 .navbar {
@@ -45,7 +45,7 @@ body {
 
 .errorlist li {
     width: 200px;
-    color: #FF1493;
+    color: #ce4676;
     list-style-type: none;
 }
 

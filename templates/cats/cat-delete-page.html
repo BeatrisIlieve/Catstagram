@@ -1,19 +1,14 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <!-- Starts Delete cat Section -->
     <div class="edit-delete edit-photo">
         <h2>Delete cat</h2>
-        <!-- Starts Delete cat Form -->
         <form method="post" action="{% url 'delete cat' username=username cat_slug=cat_slug %}">
             {{ form.as_p }}
             <button class="delete-btn" type="submit">Delete</button>
-            <!-- Go Back Button -->
             <a class="btn btn-primary" href="javascript:history.back()">
                 <button class="edit-btn" type="button">Go back</button>
             </a>
             {% csrf_token %}
         </form>
-        <!-- End Delete cat Form -->
     </div>
-    <!-- End Delete cat Section -->
 {% endblock %}

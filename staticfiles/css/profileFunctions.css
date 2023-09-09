@@ -1,11 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 .delete-profile {
-    color:  #FFA7A6;
-    text-shadow: 2px 2px 4px #aa98a9;
+    font-family: Snell Roundhand, cursive;
+    color: #aa98a9;
+    font-size: 26px;
+    text-shadow: 1px 1px 2px #FFA7A6;
+
     margin-top: 25vh;
-    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
-        Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .delete-profile h1 {
@@ -14,6 +15,7 @@
 
 .sure-buttons {
     display: flex;
+    font-family: Snell Roundhand, cursive;
     justify-content: center;
     gap: 30px;
     margin-top: 20px;
@@ -22,6 +24,7 @@
 
 .sure-buttons button, .sure-buttons a {
     padding: 5px 10px 5px 10px;
+    font-family: Snell Roundhand, cursive;
     border: none;
     border-radius: 3px;
     color: white;
@@ -33,7 +36,8 @@
 }
 
 .sure-buttons button {
-    background-color: red;
+    background-color: #ce4676;
+    font-size: 18px;
 }
 
 .sure-buttons button:hover, .sure-buttons a:hover {
@@ -41,13 +45,14 @@
 }
 
 .sure-buttons a {
-    background-color: #FF1493;
+    background-color: #FFA7A6;
+    font-size: 18px;
 }
 
 .delete-profile img {
     margin-top: -140px;
     margin-left: -60px;
-    position: absolute;
+    position: relative;
     z-index: -1;
 }
 
@@ -84,7 +89,7 @@
     border-radius: 0 0 0.2em 0.2em;
 }
 
-.list-choice input[type="radio"]+span {
+.list-choice input[type="radio"] + span {
     color: #FFF;
     background: rgb(124, 122, 122);
     padding: 0.55em 1em;
@@ -106,32 +111,32 @@
     transition: all 250ms ease;
 }
 
-.list-choice:hover .list-choice-objects input[type="radio"]+span {
+.list-choice:hover .list-choice-objects input[type="radio"] + span {
     position: relative;
     top: 0;
     transition: all 250ms ease-in-out;
 }
 
-.list-choice:hover input[type="radio"]+span:hover {
+.list-choice:hover input[type="radio"] + span:hover {
     background: rgb(148, 163, 185);
 }
 
-.list-choice:hover input[type="radio"]:checked+span:hover {
-    background: rgb(52, 115, 209);
+.list-choice:hover input[type="radio"]:checked + span:hover {
+    background: #FFA7A6;
 }
 
-.list-choice input[type="radio"]:checked+span {
-    background: rgb(148, 163, 185)5;
+.list-choice input[type="radio"]:checked + span {
+    background: rgb(148, 163, 185) 5;
     position: absolute;
     top: 0em;
     border-radius: 0.2em;
 }
 
-.list-choice:hover input[type="radio"]:checked+span {
+.list-choice:hover input[type="radio"]:checked + span {
     border-radius: 0;
 }
 
-.list-choice:hover .list-choice-objects label:nth-last-of-type(1) input[type="radio"]:checked+span {
+.list-choice:hover .list-choice-objects label:nth-last-of-type(1) input[type="radio"]:checked + span {
     border-radius: 0 0 0.2em 0.2em;
 }
 
@@ -146,6 +151,7 @@ label {
 .edit-photo input, select, .edit-photo textarea, .label-input input {
     width: 300px !important;
 }
+
 .label-input {
     display: flex;
     margin-top: -10px;
