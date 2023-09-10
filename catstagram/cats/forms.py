@@ -29,6 +29,10 @@ class CatBaseForm(forms.ModelForm):
             ),
         }
 
+        # help_texts = {
+        #     'name': 'Enter your name',
+        # }
+
 
 class CatAddForm(CatBaseForm):
     pass
