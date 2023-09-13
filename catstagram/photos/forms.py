@@ -9,6 +9,7 @@ class PhotoBaseForm(forms.ModelForm):
     class Meta:
         model = Photo
         exclude = ('publication_date',)
+        ordering = ('pk',)
 
 
 class PhotoAddForm(PhotoBaseForm):
