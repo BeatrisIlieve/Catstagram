@@ -19,9 +19,9 @@ class ChoicesEnumMixin:
 
 
 class Gender(ChoicesEnumMixin, Enum):
-    female = 'Female'
-    male = 'Male'
-    do_not_show = 'Do not Show'
+    Female = 'Female'
+    Male = 'Male'
+    DoNotShow = 'Do not Show'
 
 
 class CatstagramUser(AbstractUser):
