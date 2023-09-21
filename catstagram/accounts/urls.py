@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from catstagram.accounts.views import delete_user, details_user, edit_user, register_user, SignInView
+from catstagram.accounts.views import delete_user, details_user, edit_user, SignInView, SignUpView
 
 urlpatterns = (
-    path('register/', register_user, name='register user'),
+    path('register/', SignUpView.as_view(), name='register user'),
     path('login/', SignInView.as_view(), name='login user'),
     path('profile/<int:pk>/', include([
         path('', details_user, name='details user'),

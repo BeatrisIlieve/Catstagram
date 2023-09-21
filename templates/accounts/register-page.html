@@ -1,22 +1,20 @@
 {% extends 'base/base.html' %}
+{% load placeholders %}
 {% block page_content %}
     <div class="login-register-div">
         <div class="login-register-box">
             <h1>Catstagram</h1>
-            <form action="">
-                <input type="text" placeholder="Username">
-
-                <input type="email" placeholder="Email">
-
-                <input type="password" placeholder="Password">
-
-                <input type="password" placeholder="Repeat Password">
-
-                <button type="submit">Register</button>
+            <form method="post" action="{% url 'register user' %}">
+                {{ form.username|placeholder:'Enter your username' }}
+                {{ form.email|placeholder:'Enter your email'  }}
+                {{ form.password1|placeholder:'Enter your password'  }}
+                {{ form.password2|placeholder:'Confirm your password'  }}
+                <button type="submit">Sign up</button>
+                {% csrf_token %}
             </form>
         </div>
         <div class="second-option">
-            <p>Have an account? <a href="#">Log in</a></p>
+            <p>Have an account? <a href="{% url 'login user' %}">Sign in</a></p>
         </div>
     </div>
 {% endblock %}

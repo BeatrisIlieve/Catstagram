@@ -1,13 +1,23 @@
+from django import views
+from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
+from catstagram.accounts.forms import UserCreateForm
 
-# def login_user(request):
-#     return render(request, 'accounts/login-page.html')
+CatstagramUserModel = get_user_model()
 
 
 class SignInView(LoginView):
     template_name = 'accounts/login-page.html'
+
+
+class SignUpView(views.generic.CreateView):
+    template_name = 'accounts/register-page.html'
+    form_class = UserCreateForm
+    success_url = reverse_lazy('index')
+
 
 def delete_user(request, pk):
     return render(request, 'accounts/profile-delete-page.html')
@@ -19,7 +29,3 @@ def details_user(request, pk):
 
 def edit_user(request, pk):
     return render(request, 'accounts/profile-edit-page.html')
-
-
-def register_user(request):
-    return render(request, 'accounts/register-page.html')
