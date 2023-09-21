@@ -1,6 +1,6 @@
 from django import views
 from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView, LogoutView, UserModel
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
@@ -38,6 +38,11 @@ class EditUserView(views.generic.UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = CatstagramUserModel
     fields = ('first_name', 'last_name', 'email', 'gender', 'personal_photo',)
+
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={
+            'pk': self.request.user.pk,
+        })
 
 def delete_user(request, pk):
     return render(request, 'accounts/profile-delete-page.html')
