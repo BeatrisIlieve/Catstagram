@@ -34,7 +34,8 @@ class UserDetailsView(views.generic.DetailView):
 
         return context
 
-class EditUserView(views.generic.UpdateView):
+
+class UserEditView(views.generic.UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = CatstagramUserModel
     fields = ('first_name', 'last_name', 'email', 'gender', 'personal_photo',)
@@ -44,8 +45,8 @@ class EditUserView(views.generic.UpdateView):
             'pk': self.request.user.pk,
         })
 
-def delete_user(request, pk):
-    return render(request, 'accounts/profile-delete-page.html')
 
-
-
+class UserDeleteView(views.generic.DeleteView):
+    template_name = 'accounts/profile-delete-page.html'
+    model = CatstagramUserModel
+    success_url = reverse_lazy('index',)
