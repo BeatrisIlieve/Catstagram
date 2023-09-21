@@ -12,32 +12,37 @@
         <div class="nav-links">
             <ul class="nav-group">
                 {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{% url 'add cat' %}">
-                        <i>Add Cat</i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'add photo' %}">
-                        <i>Add Photo</i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'details user' pk=1 %}">
-                        <i>Profile</i>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{% url 'add cat' %}">
+                            <i>Add Cat</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'add photo' %}">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'details user' pk=1 %}">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout user'%}">
+                            <i>Sign out</i>
+                        </a>
+                    </li>
                 {% else %}
-                <li class="nav-item">
-                    <a href="{% url 'login user' %}">
-                        <i>Sign in</i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'register user' %}">
-                        <i>Sign up</i>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login user' %}">
+                            <i>Sign in</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'register user' %}">
+                            <i>Sign up</i>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
