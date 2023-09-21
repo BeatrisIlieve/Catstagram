@@ -5,6 +5,7 @@ from django.core import validators
 from django.db import models
 
 from catstagram.core.validators import validate_only_letters
+from catstagram.photos.validators import validate_file_less_than_5mb
 
 
 class ChoicesEnumMixin:
@@ -57,4 +58,11 @@ class CatstagramUser(AbstractUser):
     gender = models.CharField(
         choices=Gender.choices(),
         max_length=Gender.max_length(),
+    )
+
+    personal_photo = models.ImageField(
+        upload_to='account_photos/',
+        null=False,
+        blank=False,
+        validators=(validate_file_less_than_5mb,),
     )
