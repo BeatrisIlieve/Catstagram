@@ -49,4 +49,4 @@ class UserEditView(views.generic.UpdateView):
 class UserDeleteView(views.generic.DeleteView):
     template_name = 'accounts/profile-delete-page.html'
     model = CatstagramUserModel
-    success_url = reverse_lazy('index',)
+    success_url = reverse_lazy('index')
