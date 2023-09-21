@@ -1,9 +1,13 @@
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
 
-def login_user(request):
-    return render(request, 'accounts/login-page.html')
+# def login_user(request):
+#     return render(request, 'accounts/login-page.html')
 
+
+class SignInView(LoginView):
+    template_name = 'accounts/login-page.html'
 
 def delete_user(request, pk):
     return render(request, 'accounts/profile-delete-page.html')
