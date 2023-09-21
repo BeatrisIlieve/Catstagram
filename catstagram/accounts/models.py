@@ -4,6 +4,8 @@ from django.contrib.auth.models import AbstractUser
 from django.core import validators
 from django.db import models
 
+from catstagram.core.validators import validate_only_letters
+
 
 class ChoicesEnumMixin:
     @classmethod
@@ -34,6 +36,7 @@ class CatstagramUser(AbstractUser):
             validators.MinLengthValidator(
                 FIRST_NAME_MIN_LENGTH,
             ),
+            validate_only_letters,
         ),
     )
 
@@ -43,6 +46,7 @@ class CatstagramUser(AbstractUser):
             validators.MinLengthValidator(
                 LAST_NAME_MIN_LENGTH,
             ),
+            validate_only_letters,
         ),
     )
 
