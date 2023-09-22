@@ -1,47 +1,51 @@
+from django import views
 from django.shortcuts import render, redirect
 
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
+from catstagram.cats.models import Cat
 from catstagram.cats.utils import get_cat_by_name_and_username
 from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 
 
+class CatDetailsView(views.generic.DetailView):
+    template_name = 'cats/cat-details-page.html'
+    model = Cat
 
-# class UserDetailsView(views.generic.DetailView):
-#     template_name = 'accounts/profile-details-page.html'
-#     model = CatstagramUserModel
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#
-#         context['is_owner'] = self.request.user == self.object
-#         context['cats_count'] = self.object.cat_set.count()
-#
-#         photos = self.object.photo_set.prefetch_related('photolike_set')
-#
-#         context['photos_count'] = photos.count()
-#         context['likes_count'] = sum(x.photolike_set.count() for x in photos)
-#
-#         return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        cat_slug = self.kwargs['cat_slug']
+        username = self.kwargs['username']
+
+        cat = get_cat_by_name_and_username(cat_slug, username)
+        photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
+        photos = [apply_user_liked_photo(photo) for photo in photos]
+
+        context['cat'] = cat.photo_set.count()
+        context['photos_count'] = cat.photo_set.count()
+        context['cat_photos'] = photos
+        context['is_owner'] = cat.user == self.request.user
+
+        return context
 
 
-def details_cat(request, username, cat_slug):
-    cat = get_cat_by_name_and_username(cat_slug, username)
-    photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
-    photos = [apply_user_liked_photo(photo) for photo in photos]
-
-    context = {
-        'cat': cat,
-        'photos_count': cat.photo_set.count(),
-        'cat_photos': photos,
-        'is_owner': cat.user == request.user,
-    }
-
-    return render(request, 'cats/cat-details-page.html', context)
+# def details_cat(request, username, cat_slug):
+#     cat = get_cat_by_name_and_username(cat_slug, username)
+#     photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
+#     photos = [apply_user_liked_photo(photo) for photo in photos]
+#
+#     context = {
+#         'cat': cat,
+#         'photos_count': cat.photo_set.count(),
+#         'cat_photos': photos,
+#         'is_owner': cat.user == request.user,
+#     }
+#
+#     return render(request, 'cats/cat-details-page.html', context)
 
 
 def add_cat(request):
-
     if request.method == 'GET':
         form = CatAddForm()
 
@@ -62,7 +66,6 @@ def add_cat(request):
 
 
 def edit_cat(request, username, cat_slug):
-
     cat = get_cat_by_name_and_username(cat_slug, username)
 
     if not is_owner(request, cat):
@@ -88,7 +91,6 @@ def edit_cat(request, username, cat_slug):
 
 
 def delete_cat(request, username, cat_slug):
-
     cat = get_cat_by_name_and_username(cat_slug, username)
 
     if request.method == "GET":
@@ -99,7 +101,7 @@ def delete_cat(request, username, cat_slug):
 
         if form.is_valid():
             form.save()
-            return redirect('details user',pk=1)
+            return redirect('details user', pk=1)
 
     context = {
         'form': form,
