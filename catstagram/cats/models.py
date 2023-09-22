@@ -1,11 +1,12 @@
 # cats/models.py
-
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 
 from catstagram.core.model_mixins import StrFromFieldsMixin
 from catstagram.photos.validators import validate_file_less_than_5mb
 
+CatstagramUserModel = get_user_model()
 
 class Cat(StrFromFieldsMixin, models.Model):
     str_fields = ('id', 'name')
@@ -34,6 +35,11 @@ class Cat(StrFromFieldsMixin, models.Model):
     date_of_birth = models.DateField(
         null=True,
         blank=True,
+    )
+
+    user = models.ForeignKey(
+        CatstagramUserModel,
+        on_delete=models.RESTRICT,
     )
 
     def save(self, *args, **kwargs):
