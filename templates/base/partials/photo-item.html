@@ -127,7 +127,7 @@
                     <i class="far fa-smile"></i>
                 </h3>
             </div>
-            <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
+            <form method="post" action="{% url 'comment photo' photo_id=photo.pk  %}">
                 {{ comment_form }}
                 <button type="submit">Post</button>
                 {% csrf_token %}

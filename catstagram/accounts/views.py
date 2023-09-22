@@ -11,7 +11,7 @@ CatstagramUserModel = get_user_model()
 class SignUpView(views.generic.CreateView):
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('index',)
 
 
 class SignInView(LoginView):
@@ -19,7 +19,7 @@ class SignInView(LoginView):
 
 
 class SignOutView(LogoutView):
-    next_page = reverse_lazy('index')
+    next_page = reverse_lazy('index',)
 
 
 class UserDetailsView(views.generic.DetailView):

@@ -1,10 +1,28 @@
 from django.shortcuts import render, redirect
 
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
-from catstagram.cats.models import Cat
 from catstagram.cats.utils import get_cat_by_name_and_username
 from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
+
+
+
+# class UserDetailsView(views.generic.DetailView):
+#     template_name = 'accounts/profile-details-page.html'
+#     model = CatstagramUserModel
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#         context['is_owner'] = self.request.user == self.object
+#         context['cats_count'] = self.object.cat_set.count()
+#
+#         photos = self.object.photo_set.prefetch_related('photolike_set')
+#
+#         context['photos_count'] = photos.count()
+#         context['likes_count'] = sum(x.photolike_set.count() for x in photos)
+#
+#         return context
 
 
 def details_cat(request, username, cat_slug):
