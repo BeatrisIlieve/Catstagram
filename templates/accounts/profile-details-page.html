@@ -39,17 +39,19 @@
         </div>
         <div class="cats">
             <div class="statuses">
-                <a href="#">
+                {% for cat in object.cat_set.all %}
+                <a href="{% url 'details cat' cat_slug=cat.slug username=object.username %}">
                     <div class="head-cat">
                         <div class="status">
                             <div class="image">
-                                <img src="{% static 'images/beauty.jpg' %}"
-                                     alt="cat img">
+                                <img src="/media/{{ cat.personal_photo }}"
+                                     alt="Image of {{ cat.name }}">
                             </div>
                         </div>
-                        <p>Beauty</p>
+                        <p>{{ cat.name }}</p>
                     </div>
                 </a>
+                {% endfor %}
             </div>
         </div>
         <div class="cat-photos">

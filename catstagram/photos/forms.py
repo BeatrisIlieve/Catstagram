@@ -8,7 +8,7 @@ from catstagram.photos.models import Photo
 class PhotoBaseForm(forms.ModelForm):
     class Meta:
         model = Photo
-        exclude = ('publication_date',)
+        exclude = ('publication_date', 'user',)
         ordering = ('pk',)
 
 

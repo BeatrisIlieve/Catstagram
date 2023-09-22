@@ -1,6 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from catstagram.common.utils import get_user_liked_photos
 from catstagram.photos.forms import PhotoAddForm, PhotoEditForm, PhotoDeleteForm
 from catstagram.photos.models import Photo
 
@@ -8,15 +8,18 @@ from catstagram.photos.models import Photo
 def details_photo(request, pk):
     photo = Photo.objects.filter(pk=pk).get()
 
+    user_liked_photo = Photo.objects.filter(pk=pk, user_id=request.user.pk)
+
     context = {
         'photo': photo,
-        'has_user_liked_photo': get_user_liked_photos(pk),
+        'has_user_liked_photo': user_liked_photo,
         'likes_count': photo.photolike_set.count(),
     }
 
     return render(request, 'photos/photo-details-page.html', context, )
 
 
+@login_required
 def add_photo(request):
     if request.method == "GET":
         form = PhotoAddForm()
@@ -24,7 +27,9 @@ def add_photo(request):
     else:
         form = PhotoAddForm(request.POST, request.FILES)
         if form.is_valid():
-            photo = form.save()
+            photo = form.save(commit=False)
+            photo.user = request.user
+            photo.save()
             return redirect('details photo', pk=photo.pk)
 
     context = {
@@ -34,7 +39,6 @@ def add_photo(request):
 
 
 def edit_photo(request, pk):
-
     photo = Photo.objects.filter(pk=pk).get()
 
     if request.method == "GET":
@@ -52,7 +56,7 @@ def edit_photo(request, pk):
         'pk': pk,
     }
 
-    return render(request, 'photos/photo-edit-page.html', context,)
+    return render(request, 'photos/photo-edit-page.html', context, )
 
 
 def delete_photo(request, pk):
@@ -74,5 +78,3 @@ def delete_photo(request, pk):
     }
 
     return render(request, 'photos/photo-delete-page.html', context, )
-
-

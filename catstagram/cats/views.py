@@ -15,6 +15,7 @@ def details_cat(request, username, cat_slug):
         'cat': cat,
         'photos_count': cat.photo_set.count(),
         'cat_photos': photos,
+        'is_owner': cat.user == request.user,
     }
 
     return render(request, 'cats/cat-details-page.html', context)
@@ -43,7 +44,7 @@ def add_cat(request):
 
 def edit_cat(request, username, cat_slug):
 
-    cat = Cat.objects.filter(slug=cat_slug).get()
+    cat = get_cat_by_name_and_username(cat_slug, username)
 
     if request.method == "GET":
         form = CatEditForm(instance=cat)
@@ -66,7 +67,7 @@ def edit_cat(request, username, cat_slug):
 
 def delete_cat(request, username, cat_slug):
 
-    cat = Cat.objects.filter(slug=cat_slug).get()
+    cat = get_cat_by_name_and_username(cat_slug, username)
 
     if request.method == "GET":
         form = CatDeleteForm(instance=cat)
