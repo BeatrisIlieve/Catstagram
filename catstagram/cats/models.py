@@ -8,6 +8,7 @@ from catstagram.photos.validators import validate_file_less_than_5mb
 
 CatstagramUserModel = get_user_model()
 
+
 class Cat(StrFromFieldsMixin, models.Model):
     str_fields = ('id', 'name')
 
