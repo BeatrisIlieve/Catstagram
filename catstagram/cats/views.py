@@ -29,11 +29,13 @@ def add_cat(request):
         form = CatAddForm(request.POST, request.FILES)
 
         if form.is_valid():
-            form.save()
-            return redirect('details user', pk=1)
+            cat = form.save(commit=False)
+            cat.user = request.user
+            cat.save()
+            return redirect('details user', pk=request.user.pk)
 
     context = {
-        'form': CatAddForm(),
+        'form': form,
     }
 
     return render(request, 'cats/cat-add-page.html', context)
