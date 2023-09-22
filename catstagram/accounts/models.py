@@ -4,18 +4,9 @@ from django.contrib.auth.models import AbstractUser
 from django.core import validators
 from django.db import models
 
+from catstagram.core.model_mixins import ChoicesEnumMixin
 from catstagram.core.validators import validate_only_letters
 from catstagram.photos.validators import validate_file_less_than_5mb
-
-
-class ChoicesEnumMixin:
-    @classmethod
-    def choices(cls):
-        return [(x.name, x.value) for x in cls]
-
-    @classmethod
-    def max_length(cls):
-        return max(len(name) for name, _ in cls.choices())
 
 
 class Gender(ChoicesEnumMixin, Enum):

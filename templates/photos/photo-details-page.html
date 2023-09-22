@@ -17,26 +17,32 @@
                         </a>
                         <h3>
                             <a href="#">
-                                Beatris Ilieve
+                                {% if photo.user.get_full_name %}
+                                    {{ photo.user.get_full_name }}
+                                {% else %}
+                                    {{ photo.user.username }}
+                                {% endif %}
                             </a>
                             <br>
                             {% if photo.location %}
                                 <span>{{ photo.locations }}</span>
                             {% endif %}
-                            <div class="edit-delete-btns">
-                                <a href="{% url 'edit photo' pk=photo.pk %}">
-                                    <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}"
-                                         alt="edit button">
-                                </a>
-                                <a href="{% url 'delete photo' pk=photo.pk %}">
-                                    <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}"
-                                         alt="bin button">
-                                </a>
-                            </div>
+                            {% if is_owner %}
+                                <div class="edit-delete-btns">
+                                    <a href="{% url 'edit photo' pk=photo.pk %}">
+                                        <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}"
+                                             alt="edit button">
+                                    </a>
+                                    <a href="{% url 'delete photo' pk=photo.pk %}">
+                                        <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}"
+                                             alt="bin button">
+                                    </a>
+                                </div>
+                            {% endif %}
                         </h3>
                     </div>
                 </div>
-                <div class="imgBx" id="place the id of the photo here">
+                <div class="imgBx" id="{{ photo.pk }}">
                     <img src="/media/{{ photo.photo }}" alt="photo of the cats {{ photo.tagged_cats.all|join:', ' }}"
                          class="cover">
                 </div>
@@ -45,7 +51,7 @@
                         <div class="left">
                             <span class="heart">
 									<a href="{% url 'like photo' photo_id=photo.pk %}">
-										{% if photo.is_liked_by_user %}
+										{% if has_user_liked_photo %}
                                             <svg style="color: #FFA7A6"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  width="24"
@@ -100,7 +106,7 @@
                     </div>
                     <p class="likes">{{ photo.likes_count }} likes</p>
                     {% for cat in photo.tagged_cats.all %}
-                        <a href="{% url 'details cat' username='beatris' cat_slug=cat.slug %}">
+                        <a href="{% url 'details cat' cat_slug=cat.slug username=cat.user.username%}">
                             <p class="message">
                                 <b>{{ cat.name }}</b>
                             </p>

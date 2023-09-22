@@ -30,6 +30,12 @@ class UserDetailsView(views.generic.DetailView):
         context = super().get_context_data(**kwargs)
 
         context['is_owner'] = self.request.user == self.object
+        context['cats_count'] = self.object.cat_set.count()
+
+        photos = self.object.photo_set.prefetch_related('photolike_set')
+
+        context['photos_count'] = photos.count()
+        context['likes_count'] = sum(x.photolike_set.count() for x in photos)
 
         return context
 

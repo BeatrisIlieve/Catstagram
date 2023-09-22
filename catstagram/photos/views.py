@@ -14,6 +14,7 @@ def details_photo(request, pk):
         'photo': photo,
         'has_user_liked_photo': user_liked_photo,
         'likes_count': photo.photolike_set.count(),
+        'is_owner': request.user == photo.user,
     }
 
     return render(request, 'photos/photo-details-page.html', context, )
@@ -30,6 +31,7 @@ def add_photo(request):
             photo = form.save(commit=False)
             photo.user = request.user
             photo.save()
+            form.save_m2m()
             return redirect('details photo', pk=photo.pk)
 
     context = {

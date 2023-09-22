@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
 from catstagram.cats.models import Cat
 from catstagram.cats.utils import get_cat_by_name_and_username
+from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 
 
@@ -45,6 +46,9 @@ def add_cat(request):
 def edit_cat(request, username, cat_slug):
 
     cat = get_cat_by_name_and_username(cat_slug, username)
+
+    if not is_owner(request, cat):
+        return redirect('details cat', username=username, cat_slug=cat_slug)
 
     if request.method == "GET":
         form = CatEditForm(instance=cat)
