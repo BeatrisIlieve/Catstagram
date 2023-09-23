@@ -1,6 +1,6 @@
-from django import views
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 import pyperclip
 from django.urls import reverse
 
@@ -10,7 +10,8 @@ from catstagram.common.utils import get_photo_url
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 from catstagram.photos.models import Photo
 
-class IndexViewWithTemplate(views.generic.TemplateView):
+
+class IndexViewWithTemplate(TemplateView):
     template_name = 'common/home-page.html'
 
     def get_context_data(self, **kwargs):
@@ -24,7 +25,6 @@ class IndexViewWithTemplate(views.generic.TemplateView):
             photos = photos.filter(tagged_cats__name__icontains=search_pattern)
         photos = [apply_likes_count(photo) for photo in photos]
         photos = [apply_user_liked_photo(photo) for photo in photos]
-
 
         context = super().get_context_data(**kwargs)
         context['photos'] = photos
@@ -56,8 +56,8 @@ class IndexViewWithTemplate(views.generic.TemplateView):
 
 @login_required
 def like_photo(request, photo_id):
-    user_liked_photo = PhotoLike.objects\
-        .filter(photo_id=photo_id, user_id=request.user.pk,)
+    user_liked_photo = PhotoLike.objects \
+        .filter(photo_id=photo_id, user_id=request.user.pk, )
 
     if user_liked_photo:
         user_liked_photo.delete()
@@ -78,9 +78,10 @@ def share_photo(request, photo_id):
     pyperclip.copy(get_photo_url(request, photo_id))
     return redirect(get_photo_url(request, photo_id))
 
+
 @login_required
-def comment_photo(request, photo_id,):
-    photo = Photo.objects.filter(pk=photo_id,).get()
+def comment_photo(request, photo_id, ):
+    photo = Photo.objects.filter(pk=photo_id, ).get()
 
     form = PhotoCommentForm(request.POST)
 
