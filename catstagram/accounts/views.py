@@ -4,6 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
 from catstagram.accounts.forms import UserCreateForm
+from catstagram.photos.models import Photo
 
 CatstagramUserModel = get_user_model()
 

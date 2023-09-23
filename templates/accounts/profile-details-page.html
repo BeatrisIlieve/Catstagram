@@ -40,29 +40,27 @@
         <div class="cats">
             <div class="statuses">
                 {% for cat in object.cat_set.all %}
-                <a href="{% url 'details cat' cat_slug=cat.slug username=object.username %}">
-                    <div class="head-cat">
-                        <div class="status">
-                            <div class="image">
-                                <img src="/media/{{ cat.personal_photo }}"
-                                     alt="Image of {{ cat.name }}">
+                    <a href="{% url 'details cat' cat_slug=cat.slug username=object.username %}">
+                        <div class="head-cat">
+                            <div class="status">
+                                <div class="image">
+                                    <img src="/media/{{ cat.personal_photo }}"
+                                         alt="Image of {{ cat.name }}">
+                                </div>
                             </div>
+                            <p>{{ cat.name }}</p>
                         </div>
-                        <p>{{ cat.name }}</p>
-                    </div>
-                </a>
+                    </a>
                 {% endfor %}
             </div>
         </div>
         <div class="cat-photos">
-            <a href="#">
-                <img src="{% static 'images/beauty.jpg' %}"
-                     alt="cat img">
-            </a>
-            <a href="#">
-                <img src="{% static 'images/Lucky.jpg' %}"
-                     alt="cat img">
-            </a>
+            {% for photo in object.photo_set.all %}
+                <a href="{% url 'details photo' pk=photo.pk %}">
+                    <img src="/media/{{ photo.photo }}"
+                         alt="cat img">
+                </a>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
