@@ -1,4 +1,4 @@
-from django import views
+from django.views.generic import DetailView
 from django.shortcuts import render, redirect
 
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
@@ -8,7 +8,7 @@ from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 
 
-class CatDetailsView(views.generic.DetailView):
+class CatDetailsView(DetailView):
     template_name = 'cats/cat-details-page.html'
     model = Cat
 

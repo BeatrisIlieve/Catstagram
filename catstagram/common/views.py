@@ -25,6 +25,7 @@ class IndexViewWithTemplate(views.generic.TemplateView):
         photos = [apply_likes_count(photo) for photo in photos]
         photos = [apply_user_liked_photo(photo) for photo in photos]
 
+
         context = super().get_context_data(**kwargs)
         context['photos'] = photos
         context['comment_form'] = PhotoCommentForm()
