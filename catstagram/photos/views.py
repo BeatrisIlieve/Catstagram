@@ -1,44 +1,22 @@
-from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from catstagram.photos.forms import PhotoAddForm, PhotoEditForm, PhotoDeleteForm
 from catstagram.photos.models import Photo
 
 
-class PhotoDetailsView(DetailView):
-    template_name = 'photos/photo-details-page.html'
-    model = Photo
+def details_photo(request, pk):
+    photo = Photo.objects.filter(pk=pk).get()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    user_liked_photo = Photo.objects.filter(pk=pk, user_id=request.user.pk)
 
-        pk = self.kwargs['pk']
+    context = {
+        'photo': photo,
+        'has_user_liked_photo': user_liked_photo,
+        'likes_count': photo.photolike_set.count(),
+        'is_owner': request.user == photo.user,
+    }
 
-        photo = Photo.objects.filter(pk=pk).get()
-
-        user_liked_photo = Photo.objects.filter(pk=pk, user_id=self.request.user.pk)
-
-        context['photo'] = photo
-        context['has_user_liked_photo'] = user_liked_photo
-        context['likes_count'] = photo.photolike_set.count()
-        context['is_owner'] = self.request.user == photo.user
-
-        return context
-
-
-# def details_photo(request, pk):
-#     photo = Photo.objects.filter(pk=pk).get()
-#
-#     user_liked_photo = Photo.objects.filter(pk=pk, user_id=request.user.pk)
-#
-#     context = {
-#         'photo': photo,
-#         'has_user_liked_photo': user_liked_photo,
-#         'likes_count': photo.photolike_set.count(),
-#         'is_owner': request.user == photo.user,
-#     }
-#
-#     return render(request, 'photos/photo-details-page.html', context, )
+    return render(request, 'photos/photo-details-page.html', context, )
 
 
 @login_required

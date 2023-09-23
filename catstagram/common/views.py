@@ -1,6 +1,5 @@
-from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 import pyperclip
 from django.urls import reverse
 
@@ -11,48 +10,26 @@ from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_phot
 from catstagram.photos.models import Photo
 
 
-class IndexViewWithTemplate(TemplateView):
-    template_name = 'common/home-page.html'
+def index(request):
+    search_form = SearchPhotosForm(request.GET)
+    search_pattern = None
+    if search_form.is_valid():
+        search_pattern = search_form.cleaned_data['cat_name']
 
-    def get_context_data(self, **kwargs):
-        search_form = SearchPhotosForm(self.request.GET)
-        search_pattern = None
-        if search_form.is_valid():
-            search_pattern = search_form.cleaned_data['cat_name']
+    photos = Photo.objects.all()
+    if search_pattern:
+        photos = photos.filter(tagged_cats__name__icontains=search_pattern)
+    photos = [apply_likes_count(photo) for photo in photos]
+    photos = [apply_user_liked_photo(photo) for photo in photos]
 
-        photos = Photo.objects.all()
-        if search_pattern:
-            photos = photos.filter(tagged_cats__name__icontains=search_pattern)
-        photos = [apply_likes_count(photo) for photo in photos]
-        photos = [apply_user_liked_photo(photo) for photo in photos]
+    context = {
+        'photos': photos,
+        'comment_form': PhotoCommentForm(),
+        'search_form': search_form,
+    }
 
-        context = super().get_context_data(**kwargs)
-        context['photos'] = photos
-        context['comment_form'] = PhotoCommentForm()
-        context['search_form'] = search_form
+    return render(request, 'common/home-page.html', context)
 
-        return context
-
-
-# def index(request):
-#     search_form = SearchPhotosForm(request.GET)
-#     search_pattern = None
-#     if search_form.is_valid():
-#         search_pattern = search_form.cleaned_data['cat_name']
-#
-#     photos = Photo.objects.all()
-#     if search_pattern:
-#         photos = photos.filter(tagged_cats__name__icontains=search_pattern)
-#     photos = [apply_likes_count(photo) for photo in photos]
-#     photos = [apply_user_liked_photo(photo) for photo in photos]
-#
-#     context = {
-#         'photos': photos,
-#         'comment_form': PhotoCommentForm(),
-#         'search_form': search_form,
-#     }
-#
-#     return render(request, 'common/home-page.html', context)
 
 @login_required
 def like_photo(request, photo_id):

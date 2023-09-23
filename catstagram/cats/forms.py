@@ -41,7 +41,7 @@ class CatAddForm(CatBaseForm):
 class CatEditForm(CatBaseForm):
     class Meta:
         model = Cat
-        exclude = ('slug',)
+        exclude = ('slug', 'user')
 
 
 class CatDeleteForm(DisabledFormMixin, CatBaseForm):

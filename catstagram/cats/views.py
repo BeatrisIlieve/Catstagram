@@ -1,84 +1,45 @@
-from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView
 from django.shortcuts import render, redirect
 
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
-from catstagram.cats.models import Cat
 from catstagram.cats.utils import get_cat_by_name_and_username
 from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 
 
-class CatDetailsView(DetailView):
-    template_name = 'cats/cat-details-page.html'
-    model = Cat
+def details_cat(request, username, cat_slug):
+    cat = get_cat_by_name_and_username(cat_slug, username)
+    photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
+    photos = [apply_user_liked_photo(photo) for photo in photos]
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    context = {
+        'cat': cat,
+        'photos_count': cat.photo_set.count(),
+        'cat_photos': photos,
+        'is_owner': cat.user == request.user,
+    }
 
-        cat_slug = self.kwargs['cat_slug']
-        username = self.kwargs['username']
-
-        cat = get_cat_by_name_and_username(cat_slug, username)
-        photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
-        photos = [apply_user_liked_photo(photo) for photo in photos]
-
-        context['cat'] = cat.photo_set.count()
-        context['photos_count'] = cat.photo_set.count()
-        context['cat_photos'] = photos
-        context['is_owner'] = cat.user == self.request.user
-
-        return context
+    return render(request, 'cats/cat-details-page.html', context)
 
 
-# def details_cat(request, username, cat_slug):
-#     cat = get_cat_by_name_and_username(cat_slug, username)
-#     photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
-#     photos = [apply_user_liked_photo(photo) for photo in photos]
-#
-#     context = {
-#         'cat': cat,
-#         'photos_count': cat.photo_set.count(),
-#         'cat_photos': photos,
-#         'is_owner': cat.user == request.user,
-#     }
-#
-#     return render(request, 'cats/cat-details-page.html', context)
+def add_cat(request):
+    if request.method == 'GET':
+        form = CatAddForm()
 
+    else:
+        form = CatAddForm(request.POST, request.FILES)
 
-class CatAddView(CreateView):
-    template_name = 'cats/cat-add-page.html'
-    model = Cat
-    form_class = CatAddForm
+        if form.is_valid():
+            cat = form.save(commit=False)
+            cat.user = request.user
+            cat.save()
+            return redirect('details user', pk=request.user.pk)
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
+    context = {
+        'form': form,
+    }
 
-        return super().form_valid(form)
+    return render(request, 'cats/cat-add-page.html', context)
 
-    def get_success_url(self):
-        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
-
-# def add_cat(request):
-#     if request.method == 'GET':
-#         form = CatAddForm()
-#
-#     else:
-#         form = CatAddForm(request.POST, request.FILES)
-#
-#         if form.is_valid():
-#             cat = form.save(commit=False)
-#             cat.user = request.user
-#             cat.save()
-#             return redirect('details user', pk=request.user.pk)
-#
-#     context = {
-#         'form': form,
-#     }
-#
-#     return render(request, 'cats/cat-add-page.html', context)
 
 
 def edit_cat(request, username, cat_slug):
