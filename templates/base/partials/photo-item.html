@@ -2,7 +2,7 @@
 <div class="card">
     <div class="top">
         <div class="userDetails">
-            <a href="{% url 'details user' pk=1 %}">
+            <a href="{% url 'details user' pk=photo.user_id %}">
                 <div class="profilepic">
                     <div class="profile_img">
                         <div class="image">
@@ -12,7 +12,7 @@
                 </div>
             </a>
             <h3>
-                <a href="{% url 'details user' pk=user.pk %}">
+                <a href="{% url 'details user' pk=photo.user_id %}">
                     {{ user.username }}
                 </a>
                 <br>
