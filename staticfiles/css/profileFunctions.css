@@ -128,7 +128,7 @@
 }
 
 .list-choice input[type="radio"]:checked + span {
-    background: rgb(148, 163, 185) 5;
+    background: rgb(148, 163, 185);
     position: absolute;
     top: 0em;
     border-radius: 0.2em;

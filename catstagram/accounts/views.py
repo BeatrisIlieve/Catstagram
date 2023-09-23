@@ -43,7 +43,7 @@ class UserDetailsView(views.generic.DetailView):
 class UserEditView(views.generic.UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = CatstagramUserModel
-    fields = ('first_name', 'last_name', 'email', 'gender', 'personal_photo',)
+    fields = ('first_name', 'last_name', 'email', 'gender', )
 
     def get_success_url(self):
         return reverse_lazy('details user', kwargs={

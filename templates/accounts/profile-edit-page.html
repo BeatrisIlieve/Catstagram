@@ -2,7 +2,7 @@
 {% block page_content %}
     <div class="edit-delete">
         <h2>Edit Profile</h2>
-        <form method="post" action="{% url 'edit user' pk=object.pk %}" enctype="multipart/form-data">
+        <form method="post" action="{% url 'edit user' pk=object.pk %}">
             {% for field in form %}
                 <p class="error"> {{ field.errors }} </p>
                 <div class="label-input">

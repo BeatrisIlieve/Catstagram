@@ -51,9 +51,9 @@ class CatstagramUser(AbstractUser):
         max_length=Gender.max_length(),
     )
 
-    personal_photo = models.ImageField(
-        upload_to='account_photos/',
-        null=False,
-        blank=False,
-        validators=(validate_file_less_than_5mb,),
-    )
+    # personal_photo = models.ImageField(
+    #     upload_to='account_photos/',
+    #     null=False,
+    #     blank=False,
+    #     validators=(validate_file_less_than_5mb,),
+    # )
