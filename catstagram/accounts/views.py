@@ -1,5 +1,5 @@
-from django import views
 from django.contrib.auth import get_user_model
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
@@ -9,7 +9,7 @@ from catstagram.photos.models import Photo
 CatstagramUserModel = get_user_model()
 
 
-class SignUpView(views.generic.CreateView):
+class SignUpView(CreateView):
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('index',)
@@ -20,10 +20,10 @@ class SignInView(LoginView):
 
 
 class SignOutView(LogoutView):
-    next_page = reverse_lazy('index',)
+    next_page = reverse_lazy('login user',)
 
 
-class UserDetailsView(views.generic.DetailView):
+class UserDetailsView(DetailView):
     template_name = 'accounts/profile-details-page.html'
     model = CatstagramUserModel
 
@@ -41,7 +41,7 @@ class UserDetailsView(views.generic.DetailView):
         return context
 
 
-class UserEditView(views.generic.UpdateView):
+class UserEditView(UpdateView):
     template_name = 'accounts/profile-edit-page.html'
     model = CatstagramUserModel
     fields = ('first_name', 'last_name', 'email', 'gender', )
@@ -52,7 +52,7 @@ class UserEditView(views.generic.UpdateView):
         })
 
 
-class UserDeleteView(views.generic.DeleteView):
+class UserDeleteView(DeleteView):
     template_name = 'accounts/profile-delete-page.html'
     model = CatstagramUserModel
     success_url = reverse_lazy('index')

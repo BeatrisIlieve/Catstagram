@@ -9,6 +9,7 @@
                 {{ form.email|placeholder:'Enter your email'  }}
                 {{ form.password1|placeholder:'Enter your password'  }}
                 {{ form.password2|placeholder:'Confirm your password'  }}
+                <input type="hidden" name="next" value="{{ next }}">
                 <button type="submit">Sign up</button>
                 {% csrf_token %}
             </form>

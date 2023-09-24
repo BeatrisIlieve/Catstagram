@@ -55,6 +55,8 @@ class CatAddView(CreateView):
 #
 #     return render(request, 'cats/cat-add-page.html', context)
 
+# class CatEditView(UpdateView):
+#     template_name = 'cats/cat-edit-page.html'
 
 
 def edit_cat(request, username, cat_slug):
