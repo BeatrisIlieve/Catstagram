@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
@@ -14,6 +14,11 @@ class SignUpView(CreateView):
     form_class = UserCreateForm
     success_url = reverse_lazy('index',)
 
+    def form_valid(self, form):
+        result = super().form_valid(form)
+
+        login(self.request, self.object)
+        return result
 
 class SignInView(LoginView):
     template_name = 'accounts/login-page.html'
