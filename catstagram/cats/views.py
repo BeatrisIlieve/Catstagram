@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 from catstagram.cats.forms import CatAddForm, CatEditForm, CatDeleteForm
 from catstagram.cats.utils import get_cat_by_name_and_username
@@ -20,25 +22,38 @@ def details_cat(request, username, cat_slug):
 
     return render(request, 'cats/cat-details-page.html', context)
 
+class CatAddView(CreateView):
+    template_name = 'cats/cat-add-page.html'
+    form_class = CatAddForm
 
-def add_cat(request):
-    if request.method == 'GET':
-        form = CatAddForm()
+    def form_valid(self, form):
+        cat = form.save(commit=False)
+        cat.user = self.request.user
+        cat.save()
+        return super().form_valid(form)
 
-    else:
-        form = CatAddForm(request.POST, request.FILES)
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
-        if form.is_valid():
-            cat = form.save(commit=False)
-            cat.user = request.user
-            cat.save()
-            return redirect('details user', pk=request.user.pk)
 
-    context = {
-        'form': form,
-    }
-
-    return render(request, 'cats/cat-add-page.html', context)
+# def add_cat(request):
+#     if request.method == 'GET':
+#         form = CatAddForm()
+#
+#     else:
+#         form = CatAddForm(request.POST, request.FILES)
+#
+#         if form.is_valid():
+#             cat = form.save(commit=False)
+#             cat.user = request.user
+#             cat.save()
+#             return redirect('details user', pk=request.user.pk)
+#
+#     context = {
+#         'form': form,
+#     }
+#
+#     return render(request, 'cats/cat-add-page.html', context)
 
 
 

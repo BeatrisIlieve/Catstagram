@@ -1,9 +1,9 @@
 from django.urls import path, include
 
-from catstagram.cats.views import add_cat, delete_cat, details_cat, edit_cat
+from catstagram.cats.views import CatAddView, delete_cat, details_cat, edit_cat
 
 urlpatterns = (
-    path('add/', add_cat, name='add cat'),
+    path('add/', CatAddView.as_view(), name='add cat'),
     path('<str:username>/cat/<slug:cat_slug>/', include([
         path('', details_cat, name='details cat'),
         path('delete/', delete_cat, name='delete cat'),
