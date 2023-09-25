@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from catstagram.photos.forms import PhotoAddForm, PhotoEditForm, PhotoDeleteForm
 from catstagram.photos.models import Photo
 
-
+@login_required
 def details_photo(request, pk):
     photo = Photo.objects.filter(pk=pk).get()
 

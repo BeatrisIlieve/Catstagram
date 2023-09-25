@@ -22,19 +22,21 @@
                         </a>
                         {% endif %}
                     </div>
-                    <div class="data">
-                        <span>{{ photos_count }}</span>
-                        <p>photos</p>
+                    <div class="cat-details">
+                        <h4>Date of birth:</h4>
                     </div>
+                <div>
+                    <p>{{ date_of_birth }}</p>
+                </div>
                 </div>
             </div>
         </div>
-        <div class="cat-posts">
-            {% for photo in cat_photos %}
-                {% include 'base/partials/photo-item.html' with photo=photo %}
-            {% empty %}
-                <img class="no-posts" src="{% static 'images/no_posts.png' %}" alt="no posts image">
-            {% endfor %}
-        </div>
+{#        <div class="cat-posts">#}
+{#            {% for photo in cat_photos %}#}
+{#                {% include 'base/partials/photo-item.html' with photo=photo %}#}
+{#            {% empty %}#}
+{#                <img class="no-posts" src="{% static 'images/no_posts.png' %}" alt="no posts image">#}
+{#            {% endfor %}#}
+{#        </div>#}
     </div>
 {% endblock %}

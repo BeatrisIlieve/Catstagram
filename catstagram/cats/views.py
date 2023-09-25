@@ -18,6 +18,7 @@ def details_cat(request, pk, cat_slug):
         'photos_count': cat.photo_set.count(),
         'cat_photos': photos,
         'is_owner': cat.user == request.user,
+        'date_of_birth': cat.date_of_birth,
     }
 
     return render(request, 'cats/cat-details-page.html', context)
