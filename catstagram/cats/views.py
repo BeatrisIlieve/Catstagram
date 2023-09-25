@@ -59,11 +59,11 @@ class CatAddView(CreateView):
 #     template_name = 'cats/cat-edit-page.html'
 
 
-def edit_cat(request, username, cat_slug):
-    cat = get_cat_by_name_and_username(cat_slug, username)
+def edit_cat(request, pk, cat_slug):
+    cat = get_cat_by_name_and_username(cat_slug, pk)
 
     if not is_owner(request, cat):
-        return redirect('details cat', username=username, cat_slug=cat_slug)
+        return redirect('details cat', pk=pk, cat_slug=cat_slug)
 
     if request.method == "GET":
         form = CatEditForm(instance=cat)
@@ -73,12 +73,12 @@ def edit_cat(request, username, cat_slug):
 
         if form.is_valid():
             form.save()
-            return redirect('details cat', username=username, cat_slug=cat_slug)
+            return redirect('details cat', pk=pk, cat_slug=cat_slug)
 
     context = {
         'form': form,
         'cat_slug': cat_slug,
-        'username': username,
+        'pk': pk,
     }
 
     return render(request, 'cats/cat-edit-page.html', context)
