@@ -2,18 +2,21 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from catstagram.accounts.models import Profile
+from catstagram.common.models import PhotoLike
+from catstagram.common.utils import get_photo_url
 from catstagram.photos.forms import PhotoAddForm, PhotoEditForm, PhotoDeleteForm
 from catstagram.photos.models import Photo
+
 
 @login_required
 def details_photo(request, pk):
     photo = Photo.objects.filter(pk=pk).get()
 
-    user_liked_photo = Photo.objects.filter(pk=pk, user_id=request.user.pk)
+    # user_liked_photo = like_photo(pk)
 
     context = {
         'photo': photo,
-        'has_user_liked_photo': user_liked_photo,
+        # 'has_user_liked_photo': user_liked_photo,
         'likes_count': photo.photolike_set.count(),
         'is_owner': request.user == photo.user,
     }

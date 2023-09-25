@@ -10,7 +10,7 @@
             </div>
             <div class="personal">
                 <div class="edit">
-                    <p>{{ object.username }}</p>
+                    <p>{{ user.profile.full_name }}</p>
                     {% if is_owner %}
                         <a href="{% url 'edit user' pk=object.pk %}">
                             <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">

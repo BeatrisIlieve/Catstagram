@@ -62,6 +62,7 @@
 
 .personal .edit p {
     white-space: nowrap;
+    font-weight: bold;
 }
 
 .personal .edit-img {

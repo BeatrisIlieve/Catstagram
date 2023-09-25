@@ -87,9 +87,9 @@
                 </p>
             </a>
         {% endfor %}
-        <a href="{% url 'details photo' pk=photo.pk %}">
-            <h4 class="details">See details...</h4>
-        </a>
+{#        <a href="{% url 'details photo' pk=photo.pk %}">#}
+{#            <h4 class="details">See details...</h4>#}
+{#        </a>#}
         <h5 class="postTime">{{ photo.publication_date }}</h5>
         {% for comment in photo.photocomment_set.all %}
             <div class="comments">
