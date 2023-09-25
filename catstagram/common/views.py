@@ -48,14 +48,6 @@ def like_photo(request, photo_id):
     return redirect(get_photo_url(request, photo_id))
 
 
-def share_photo(request, photo_id):
-    photo_details_url = reverse('details photo', kwargs={
-        'pk': photo_id,
-    })
-    pyperclip.copy(get_photo_url(request, photo_id))
-    return redirect(get_photo_url(request, photo_id))
-
-
 @login_required
 def comment_photo(request, photo_id, ):
     photo = Photo.objects.filter(pk=photo_id, ).get()
