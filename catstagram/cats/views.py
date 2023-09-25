@@ -92,7 +92,7 @@ def delete_cat(request, pk, cat_slug):
         form = CatDeleteForm(instance=cat)
 
     else:
-        form = CatDeleteForm(request.POST, instance=cat)
+        form = CatDeleteForm(request.POST, request.FILES, instance=cat)
 
         if form.is_valid():
             form.save()

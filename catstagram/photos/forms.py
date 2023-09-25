@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 
 from catstagram.common.models import PhotoLike, PhotoComment
@@ -32,11 +34,13 @@ class PhotoDeleteForm(DisabledFormMixin, PhotoBaseForm):
         self._disable_fields()
 
     def save(self, commit=True):
+        photo_path = self.instance.photo.path
         if commit:
             self.instance.tagged_cats.clear()
             PhotoLike.objects.filter(photo_id=self.instance.id).delete()
             PhotoComment.objects.filter(photo_id=self.instance.id).delete()
             self.instance.delete()
+            os.remove(photo_path)
         else:
             pass
         return self.instance

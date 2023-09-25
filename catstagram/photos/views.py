@@ -69,7 +69,7 @@ def delete_photo(request, pk):
         form = PhotoDeleteForm(instance=photo)
 
     else:
-        form = PhotoDeleteForm(request.POST, instance=photo)
+        form = PhotoDeleteForm(request.POST, request.FILES, instance=photo)
 
         if form.is_valid():
             form.save()

@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 
 from catstagram.cats.models import Cat
@@ -68,8 +70,10 @@ class CatDeleteForm(DisabledFormMixin, CatBaseForm):
         self._disable_fields()
 
     def save(self, commit=True):
+        personal_photo_path = self.instance.personal_photo.path
         if commit:
             self.instance.delete()
+            os.remove(personal_photo_path)
         else:
             pass
         return self.instance
