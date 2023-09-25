@@ -28,13 +28,13 @@
                     <span style="color: #ffa7a6">{{ likes_count }}</span>
                     <p>likes</p>
                 </div>
-                {% if object.get_full_name %}
-                    <h3 class="names">{{ object.get_full_name }}</h3>
+                {% if object.full_name %}
+                    <h3 class="names">{{ object.full_name }}</h3>
                 {% endif %}
                 <p class="email">{{ object.email }}</p>
-                {% if object.gender %}
-                    <p class="gender">{{ object.gender }}</p>
-                {% endif %}
+{#                {% if object.gender %}#}
+{#                    <p class="gender">{{ object.gender }}</p>#}
+{#                {% endif %}#}
             </div>
         </div>
         <div class="cats">

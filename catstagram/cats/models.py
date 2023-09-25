@@ -27,6 +27,7 @@ class Cat(StrFromFieldsMixin, models.Model):
         validators=(validate_file_less_than_5mb,),
     )
 
+
     slug = models.SlugField(
         unique=True,
         null=False,

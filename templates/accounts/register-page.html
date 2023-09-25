@@ -5,7 +5,7 @@
         <div class="login-register-box">
             <h1>Catstagram</h1>
             <form method="post" action="{% url 'register user' %}">
-                {{ form.username|placeholder:'Enter your username' }}
+{#                {{ form.username|placeholder:'Enter your username' }}#}
                 {{ form.email|placeholder:'Enter your email'  }}
                 {{ form.password1|placeholder:'Enter your password'  }}
                 {{ form.password2|placeholder:'Confirm your password'  }}

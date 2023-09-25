@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
 
 from catstagram.accounts.forms import UserCreateForm
-from catstagram.photos.models import Photo
+from catstagram.accounts.models import Profile
 
 CatstagramUserModel = get_user_model()
 
@@ -12,7 +12,7 @@ CatstagramUserModel = get_user_model()
 class SignUpView(CreateView):
     template_name = 'accounts/register-page.html'
     form_class = UserCreateForm
-    success_url = reverse_lazy('index',)
+    success_url = reverse_lazy('index', )
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -20,12 +20,13 @@ class SignUpView(CreateView):
         login(self.request, self.object)
         return result
 
+
 class SignInView(LoginView):
     template_name = 'accounts/login-page.html'
 
 
 class SignOutView(LogoutView):
-    next_page = reverse_lazy('login user',)
+    next_page = reverse_lazy('login user', )
 
 
 class UserDetailsView(DetailView):
@@ -48,8 +49,8 @@ class UserDetailsView(DetailView):
 
 class UserEditView(UpdateView):
     template_name = 'accounts/profile-edit-page.html'
-    model = CatstagramUserModel
-    fields = ('first_name', 'last_name', 'email', 'gender', )
+    model = Profile
+    fields = ('first_name', 'last_name',)
 
     def get_success_url(self):
         return reverse_lazy('details user', kwargs={
