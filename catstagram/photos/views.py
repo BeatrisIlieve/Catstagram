@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+
+from catstagram.accounts.models import Profile
 from catstagram.photos.forms import PhotoAddForm, PhotoEditForm, PhotoDeleteForm
 from catstagram.photos.models import Photo
 
@@ -71,7 +73,7 @@ def delete_photo(request, pk):
 
         if form.is_valid():
             form.save()
-            return redirect('details user', pk=pk)
+            return redirect('details user', pk=request.user.pk)
 
     context = {
         'form': form,

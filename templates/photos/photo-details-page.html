@@ -17,15 +17,18 @@
                         </a>
                         <h3>
                             <a href="#">
-                                {% if photo.user.get_full_name %}
-                                    {{ photo.user.get_full_name }}
+                                {% if photo.user.profile.full_name %}
+                                    {{ photo.user.profile.full_name }}
                                 {% else %}
-                                    {{ photo.user.username }}
+                                    {{ photo.user.email }}
                                 {% endif %}
                             </a>
                             <br>
                             {% if photo.location %}
                                 <span>{{ photo.locations }}</span>
+                            {% endif %}
+                            {% if photo.description %}
+                                <span>{{ photo.description }}</span>
                             {% endif %}
                             {% if is_owner %}
                                 <div class="edit-delete-btns">
@@ -94,7 +97,7 @@
                     </div>
                     <p class="likes">{{ photo.likes_count }} likes</p>
                     {% for cat in photo.tagged_cats.all %}
-                        <a href="{% url 'details cat' cat_slug=cat.slug pk=user.pk%}">
+                        <a href="{% url 'details cat' cat_slug=cat.slug pk=user.pk %}">
                             <p class="message">
                                 <b>{{ cat.name }}</b>
                             </p>
@@ -115,7 +118,7 @@
                                             </div>
                                         </div>
                                         <p>
-                                            <a href="">Beatris Ilieve : </a>
+                                            <a href="">{{ photo.user.profile.full_name }} : </a>
                                             {{ comment.text }}
                                         </p>
                                     </div>

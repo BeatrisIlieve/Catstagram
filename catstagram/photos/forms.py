@@ -23,7 +23,9 @@ class PhotoEditForm(PhotoBaseForm):
 
 
 class PhotoDeleteForm(DisabledFormMixin, PhotoBaseForm):
-    disabled_fields = '__all__'
+    class Meta:
+        model = Photo
+        fields = ()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

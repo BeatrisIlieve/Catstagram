@@ -15,7 +15,7 @@ from catstagram.core.validators import validate_only_letters
 #     DoNotShow = 'Do not Show'
 
 
-class CatstagramUser(AbstractBaseUser, PermissionsMixin):
+class CatstagramUser(AbstractBaseUser, PermissionsMixin,):
     email = models.EmailField(
         unique=True,
         null=False,
@@ -35,6 +35,9 @@ class CatstagramUser(AbstractBaseUser, PermissionsMixin):
     )
 
     objects = CatstagramUserManager()
+
+
+
 
 
 class Profile(models.Model):
@@ -69,6 +72,11 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
 
     # gender = models.CharField(
     #     choices=Gender.choices(),

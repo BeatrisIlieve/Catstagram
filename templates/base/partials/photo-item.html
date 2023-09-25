@@ -13,7 +13,12 @@
             </a>
             <h3>
                 <a href="{% url 'details user' pk=photo.user_id %}">
-                    {{ user.username }}
+                    {% if photo.user.profile.full_name %}
+                        {{ photo.user.profile.full_name }}
+                    {% else %}
+                        {{ photo.user.email }}
+                    {% endif %}
+
                 </a>
                 <br>
                 {% if photo.locations %}
@@ -100,7 +105,7 @@
                                 </div>
                             </div>
                             <p>
-                                <a href="">Beatris Ilieve : </a>
+                                <a href="{% url 'details user' pk=object.pk %}">{{ object.username }} : </a>
                                 {{ comment.text }}
                             </p>
                         </div>
@@ -115,7 +120,7 @@
                     <i class="far fa-smile"></i>
                 </h3>
             </div>
-            <form method="post" action="{% url 'comment photo' photo_id=photo.pk  %}">
+            <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
                 {{ comment_form }}
                 <button type="submit">Post</button>
                 {% csrf_token %}
