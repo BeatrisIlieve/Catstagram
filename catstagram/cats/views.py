@@ -8,8 +8,8 @@ from catstagram.core.decorator import is_owner
 from catstagram.core.photo_utils import apply_likes_count, apply_user_liked_photo
 
 
-def details_cat(request, username, cat_slug):
-    cat = get_cat_by_name_and_username(cat_slug, username)
+def details_cat(request, pk, cat_slug):
+    cat = get_cat_by_name_and_username(cat_slug, pk)
     photos = [apply_likes_count(photo) for photo in cat.photo_set.all()]
     photos = [apply_user_liked_photo(photo) for photo in photos]
 

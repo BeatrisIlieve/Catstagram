@@ -40,7 +40,7 @@
         <div class="cats">
             <div class="statuses">
                 {% for cat in object.cat_set.all %}
-                    <a href="{% url 'details cat' cat_slug=cat.slug username=object.username %}">
+                    <a href="{% url 'details cat' cat_slug=cat.slug pk=object.pk %}">
                         <div class="head-cat">
                             <div class="status">
                                 <div class="image">

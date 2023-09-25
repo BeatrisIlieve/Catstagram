@@ -45,7 +45,7 @@ class CatstagramUserAdmin(UserAdmin):
 @admin.register(Profile)
 class EditCatstagramUserAdmin(admin.ModelAdmin):
     ordering = ('first_name',)
-    list_display = ['first_name', 'last_name']
+    list_display = ['first_name', 'last_name', 'pk']
     list_filter = ()
     form = UserEditForm
     add_fieldsets = (
