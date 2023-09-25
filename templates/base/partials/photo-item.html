@@ -76,7 +76,7 @@
         </div>
         <p class="likes">{{ photo.likes_count }} likes</p>
         {% for cat in photo.tagged_cats.all %}
-            <a href="{% url 'details cat' username=user.username cat_slug=cat.slug %}">
+            <a href="{% url 'details cat' pk=user.pk cat_slug=cat.slug %}">
                 <p class="message">
                     <b>{{ cat.name }}</b>
                 </p>
