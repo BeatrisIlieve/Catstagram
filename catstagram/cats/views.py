@@ -84,8 +84,8 @@ def edit_cat(request, pk, cat_slug):
     return render(request, 'cats/cat-edit-page.html', context)
 
 
-def delete_cat(request, username, cat_slug):
-    cat = get_cat_by_name_and_username(cat_slug, username)
+def delete_cat(request, pk, cat_slug):
+    cat = get_cat_by_name_and_username(cat_slug, pk)
 
     if request.method == "GET":
         form = CatDeleteForm(instance=cat)
@@ -95,12 +95,12 @@ def delete_cat(request, username, cat_slug):
 
         if form.is_valid():
             form.save()
-            return redirect('details user', pk=1)
+            return redirect('details user', pk=pk)
 
     context = {
         'form': form,
         'cat_slug': cat_slug,
-        'username': username,
+        'pk': pk,
     }
 
     return render(request, 'cats/cat-delete-page.html', context)
