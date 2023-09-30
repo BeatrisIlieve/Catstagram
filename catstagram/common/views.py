@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-import pyperclip
 from django.urls import reverse
 
 from catstagram.common.forms import PhotoCommentForm, SearchPhotosForm
@@ -50,7 +49,7 @@ def like_photo(request, photo_id):
 
 @login_required
 def comment_photo(request, photo_id, ):
-    photo = Photo.objects.filter(pk=photo_id, ).get()
+    photo = Photo.objects.filter(pk=photo_id, user_id=request.user.pk,).get()
 
     form = PhotoCommentForm(request.POST)
 
