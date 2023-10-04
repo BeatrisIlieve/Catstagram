@@ -58,3 +58,7 @@
 - `Total number of likes`
 - `Total number of pets`
 - Else `No posts yet`
+#### Profile Edit Page
+- `Email`
+- `First Name`
+- `Last Name`
