@@ -1,6 +1,6 @@
 # <p align="center"> *Catstagram* </p>
 ### <p align="center"> The project covers the following functionalities: user registration, login, and logout; each user can add cats to their profile and upload cat photos; a user can view all photos of cats, open details, can like and comment on a photo. Each user can edit and delete their photos and cat information. </p>
-## Structure:
+## Solution:
 ### 1. **Models**
 #### CatstagramUser
 - `Email`
@@ -29,4 +29,11 @@
 - `Publication Date`
 - `Tagged Cats`
 - `User`
-
+### 2. **Structure**
+- `Petstagram button` that leads to the home page
+- `Add Pet button` that leads to the pet add page
+- `Add Photo button` that leads to the photo add page
+- `Login button` that leads to the login page (visible only to unauthenticated users)
+- `Register button` that leads to the register page (visible only to unauthenticated users)
+- `Profile button` that leads to the user profile details page (visible only to authenticated users)
+- `Logout button` that logs out the logged-in user (visible only to authenticated users)
