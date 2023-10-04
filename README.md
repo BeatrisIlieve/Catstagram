@@ -51,3 +51,10 @@
 - `Email`
 - `Password`
 - When a user is logged in he/she is redirected to the Home page
+#### Profile Details Page
+- `Edit button`
+- `Delete button`
+- `Total number of photos`
+- `Total number of likes`
+- `Total number of pets`
+- Else `No posts yet`
