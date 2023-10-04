@@ -80,3 +80,6 @@
 - `Cat Name`
 - `Date of birth`
 - `Cat image`
+#### Cat Delete Page
+- `Delete button`
+- Only the name of cat is vissible and it is in a readoonly format
