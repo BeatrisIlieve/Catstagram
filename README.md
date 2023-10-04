@@ -43,3 +43,7 @@
 - `Cat Photos`
 - `Like Button`
 - `Total Lekes`
+#### 404 Page Not Found
+#### Registration Page
+- `Email`
+- `Password`
