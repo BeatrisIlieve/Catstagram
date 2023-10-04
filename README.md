@@ -47,3 +47,7 @@
 #### Registration Page
 - `Email`
 - `Password`
+#### Login Page
+- `Email`
+- `Password`
+- When a user is logged in he/she is redirected to the Home page
