@@ -62,3 +62,8 @@
 - `Email`
 - `First Name`
 - `Last Name`
+#### Profile Delete Page
+- `Are you sure you want to delete your profile?`
+- `Yes`
+- `Go Back`
+-  If the user clicks on the "Yes" button the profile is deleted, and all the user's photos, cats and likes as well, and the user is redirected to the Home page
