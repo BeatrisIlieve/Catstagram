@@ -76,3 +76,7 @@
 - `Cat Name`
 - `Edit button`
 - `Delete button`
+#### Cat Edit Page
+- `Cat Name`
+- `Date of birth`
+- `Cat image`
