@@ -71,3 +71,8 @@
 - `Cat Name`
 - `Date of Birth`
 - `Upload image field`
+#### Cat Details Page
+- `Cat picture`
+- `Cat Name`
+- `Edit button`
+- `Delete button`
