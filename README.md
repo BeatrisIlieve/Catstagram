@@ -83,3 +83,9 @@
 #### Cat Delete Page
 - `Delete button`
 - Only the name of cat is vissible and it is in a readoonly format
+#### Photo Add Page
+- `Cat image`
+- `Description`
+- `Tag cats`
+- `Location`
+- Redirected to Home Page
