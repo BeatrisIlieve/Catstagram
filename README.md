@@ -89,3 +89,8 @@
 - `Tag cats`
 - `Location`
 - Redirected to Home Page
+#### Photo Edit Page
+- `Edit description`
+- `Edit tagged cats`
+- `Edit location`
+- Photo field is not editable
